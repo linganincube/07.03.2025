@@ -1,6 +1,6 @@
 # Knowledge Base
 diseases = {
-    "Flu": ["fever", "cough", "sore_throat", "runny_nose"],
+    "Flu": ["fever", "cough", "sore_throat","headache" "runny_nose"],
     "Pneumonia": ["fever", "cough", "difficulty_breathing", "chest_pain"],
     "Diabetes": ["frequent_urination", "excessive_thirst", "fatigue", "blurred_vision"],
     "Hypertension": ["headache", "dizziness", "chest_pain", "shortness_of_breath"],
