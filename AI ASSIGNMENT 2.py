@@ -9,8 +9,8 @@ knowledge_base = {
     "course catalog": "You can find the course catalog on the university website under the 'Academics' section.",
     "student housing": "On-campus housing is available. Applications open in March for the next academic year.",
     "contact information": "You can contact the admissions office at admissions@cuz.ac.zw or call +263-868-800-2370.",
-    "artificial intelligence lecturer":"Dr S Masimba",
-    "best graduate":"Lingani Ncube",
+    "artificial intelligence lecturer":"Dr S Masimba and he is a specialist in Computer Science and Artificial Intelligence",
+    "best graduate":"His name is Lingani Ncube and he is a MBIT student from 2024 intake",
     "how do i apply":"Please visit www.cuz.ac.zw and click on new application",
     "physical address of university": '18443, Cranborne Avenue, Hatfield, Harare'
 }
