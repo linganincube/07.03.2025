@@ -4,18 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e2d5efc-0a10-4670-89b0-7f72a295be88" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Individual Assignment Q1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Individual Assignment Q10.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Individual Assignment Q2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Individual Assignment Q4.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Individual Assignment Q5.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Individual Assignment Q6.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Individual Assignment Q7.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Individual Assignment Q8.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Individual Assignment Q9.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Individual assignment Q3.py" afterDir="false" />
+    <list default="true" id="9e2d5efc-0a10-4670-89b0-7f72a295be88" name="Changes" comment="Update `.idea/workspace.xml` to clean up and adjust settings.&#10;&#10;Removed obsolete file references and reformatted properties to enhance clarity and maintainability. Minor adjustments were made to task duration data. This improves project configuration and reflects accurate metadata.">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MySQL queries.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Weight MySQL file.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/new MySQL.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/basic.py" beforeDir="false" afterPath="$PROJECT_DIR$/basic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/numbers.py" beforeDir="false" afterPath="$PROJECT_DIR$/problem.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,65 +50,74 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Django tests.Test: .executor": "Run",
-    "Python tests.Doctests in Individual Assignment Q2.executor": "Run",
-    "Python.08.03.2025.executor": "Run",
-    "Python.AI ASSIGNMENT 2.executor": "Run",
-    "Python.AI assignment 1.executor": "Run",
-    "Python.ASSIGNMENT 2 TINKER.executor": "Run",
-    "Python.Ai assignment Tinker.executor": "Run",
-    "Python.Assignment Question 1.executor": "Run",
-    "Python.Graphics 2.executor": "Run",
-    "Python.INHERITENCE.executor": "Run",
-    "Python.Individual Assignment Q1.executor": "Run",
-    "Python.Individual Assignment Q10.executor": "Run",
-    "Python.Individual Assignment Q4.executor": "Run",
-    "Python.Individual Assignment Q5.executor": "Run",
-    "Python.Individual Assignment Q6.executor": "Run",
-    "Python.Individual Assignment Q7.executor": "Run",
-    "Python.Individual Assignment Q8.executor": "Run",
-    "Python.Individual Assignment Q9.executor": "Run",
-    "Python.Individual assignment Q3.executor": "Run",
-    "Python.Murimi.executor": "Run",
-    "Python.Question 3 assignment.executor": "Run",
-    "Python.Question 4 assignment.executor": "Run",
-    "Python.Question 5 assignment.executor": "Run",
-    "Python.SQL FILE.executor": "Run",
-    "Python.Scores.executor": "Run",
-    "Python.ai test.executor": "Run",
-    "Python.assignment 2.executor": "Run",
-    "Python.basic.executor": "Run",
-    "Python.django_manage.executor": "Run",
-    "Python.else if.executor": "Run",
-    "Python.graphical.executor": "Run",
-    "Python.hours.executor": "Run",
-    "Python.leap year.executor": "Run",
-    "Python.medical gemini.executor": "Run",
-    "Python.medical.executor": "Run",
-    "Python.name.executor": "Run",
-    "Python.num1.executor": "Run",
-    "Python.numbers.executor": "Run",
-    "Python.parent.executor": "Run",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/lncube/PyCharmMiscProject/basic.py",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.intellij.python.django.customization.DjangoModulesConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Django tests.Test: .executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Doctests in Individual Assignment Q2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.08.03.2025.executor&quot;: &quot;Run&quot;,
+    &quot;Python.AI ASSIGNMENT 2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.AI assignment 1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ASSIGNMENT 2 TINKER.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Ai assignment Tinker.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Assignment Question 1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Graphics 2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.INHERITENCE.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Individual Assignment Q1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Individual Assignment Q10.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Individual Assignment Q4.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Individual Assignment Q5.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Individual Assignment Q6.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Individual Assignment Q7.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Individual Assignment Q8.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Individual Assignment Q9.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Individual assignment Q3.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Murimi.executor&quot;: &quot;Run&quot;,
+    &quot;Python.MySQL project.executor&quot;: &quot;Run&quot;,
+    &quot;Python.MySQL queries.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Question 3 assignment.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Question 4 assignment.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Question 5 assignment.executor&quot;: &quot;Run&quot;,
+    &quot;Python.SQL FILE.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Scores.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Weight MySQL file.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ai test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.assignment 2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.basic.executor&quot;: &quot;Run&quot;,
+    &quot;Python.django_manage.executor&quot;: &quot;Run&quot;,
+    &quot;Python.else if.executor&quot;: &quot;Run&quot;,
+    &quot;Python.graphical.executor&quot;: &quot;Run&quot;,
+    &quot;Python.hours.executor&quot;: &quot;Run&quot;,
+    &quot;Python.leap year.executor&quot;: &quot;Run&quot;,
+    &quot;Python.medical gemini.executor&quot;: &quot;Run&quot;,
+    &quot;Python.medical.executor&quot;: &quot;Run&quot;,
+    &quot;Python.name.executor&quot;: &quot;Run&quot;,
+    &quot;Python.new MySQL.executor&quot;: &quot;Run&quot;,
+    &quot;Python.num1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.numbers.executor&quot;: &quot;Run&quot;,
+    &quot;Python.parent.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/lncube/PyCharmMiscProject/basic.py&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.intellij.python.django.customization.DjangoModulesConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
   }
-}]]></component>
-  <component name="RunManager" selected="Python.Individual Assignment Q10">
+}</component>
+  <component name="RunManager" selected="Python.MySQL project">
     <configuration name="Unnamed" type="ChromiumRemoteDebugType" factoryName="Chromium Remote" editBeforeRun="true" nameIsGenerated="true" port="9229">
       <method v="2" />
     </configuration>
@@ -141,7 +147,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Individual Assignment Q6" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="MySQL project" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PyCharmMiscProject" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -155,7 +161,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Individual Assignment Q6.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MySQL project.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -164,7 +170,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Individual Assignment Q7" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="MySQL queries" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PyCharmMiscProject" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -178,7 +184,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Individual Assignment Q7.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MySQL queries.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -187,7 +193,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Individual Assignment Q8" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="Weight MySQL file" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PyCharmMiscProject" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -201,7 +207,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Individual Assignment Q8.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Weight MySQL file.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -210,7 +216,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Individual Assignment Q9" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="new MySQL" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PyCharmMiscProject" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -224,7 +230,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Individual Assignment Q9.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/new MySQL.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -235,19 +241,19 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.MySQL project" />
+        <item itemvalue="Python.Weight MySQL file" />
+        <item itemvalue="Python.MySQL queries" />
+        <item itemvalue="Python.new MySQL" />
         <item itemvalue="Python.Individual Assignment Q10" />
-        <item itemvalue="Python.Individual Assignment Q9" />
-        <item itemvalue="Python.Individual Assignment Q8" />
-        <item itemvalue="Python.Individual Assignment Q7" />
-        <item itemvalue="Python.Individual Assignment Q6" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-76f8388c3a79-JavaScript-PY-243.24978.54" />
-        <option value="bundled-python-sdk-91e3b7efe1d4-466328ff949b-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.24978.54" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-PY-243.26053.29" />
+        <option value="bundled-python-sdk-b1dbf8ef85a6-4df51de95216-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.26053.29" />
       </set>
     </attachedChunks>
   </component>
@@ -276,24 +282,37 @@
       <workItem from="1742373750899" duration="308000" />
       <workItem from="1742374079472" duration="552000" />
       <workItem from="1742374654346" duration="3030000" />
-      <workItem from="1742379435783" duration="5104000" />
+      <workItem from="1742379435783" duration="5410000" />
+      <workItem from="1742384912402" duration="9674000" />
+      <workItem from="1742539821033" duration="3504000" />
+      <workItem from="1742545143095" duration="1620000" />
+      <workItem from="1742546799142" duration="4973000" />
+      <workItem from="1742553014941" duration="1244000" />
+      <workItem from="1742554615970" duration="1489000" />
+      <workItem from="1742556136063" duration="3982000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/PyCharmMiscProject$hours.coverage" NAME="hours Coverage Results" MODIFIED="1740220795551" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$Doctests_in_Individual_Assignment_Q2.coverage" NAME="Doctests in Individual Assignment Q2 Coverage Results" MODIFIED="1742379495914" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$hours.coverage" NAME="hours Coverage Results" MODIFIED="1740220795551" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$leap_year.coverage" NAME="leap year Coverage Results" MODIFIED="1740294874734" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$Question_3_assignment.coverage" NAME="Question 3 assignment Coverage Results" MODIFIED="1741511872220" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$Individual_Assignment_Q5.coverage" NAME="Individual Assignment Q5 Coverage Results" MODIFIED="1742381301546" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$Individual_Assignment_Q8.coverage" NAME="Individual Assignment Q8 Coverage Results" MODIFIED="1742383146127" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Weight_MySQL_file.coverage" NAME="Weight MySQL file Coverage Results" MODIFIED="1742562751702" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$Individual_assignment_Q3.coverage" NAME="Individual assignment Q3 Coverage Results" MODIFIED="1742379674481" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$new_MySQL.coverage" NAME="new MySQL Coverage Results" MODIFIED="1742554794711" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$SQL_FILE.coverage" NAME="SQL FILE Coverage Results" MODIFIED="1742112916576" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$graphical.coverage" NAME="graphical Coverage Results" MODIFIED="1742108146991" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$Ai_assignment_Tinker.coverage" NAME="Ai assignment Tinker Coverage Results" MODIFIED="1742374905427" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$MySQL_queries.coverage" NAME="MySQL queries Coverage Results" MODIFIED="1742556213259" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$AI_ASSIGNMENT_2.coverage" NAME="AI ASSIGNMENT 2 Coverage Results" MODIFIED="1741716386629" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$Question_5_assignment.coverage" NAME="Question 5 assignment Coverage Results" MODIFIED="1741513706933" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$else_if.coverage" NAME="else if Coverage Results" MODIFIED="1740239870815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -314,8 +333,9 @@
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$ai_test.coverage" NAME="ai test Coverage Results" MODIFIED="1741529430803" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$INHERITENCE.coverage" NAME="INHERITENCE Coverage Results" MODIFIED="1741172043785" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$medical_gemini.coverage" NAME="medical gemini Coverage Results" MODIFIED="1740410209380" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Individual_Assignment_Q10.coverage" NAME="Individual Assignment Q10 Coverage Results" MODIFIED="1742384544493" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Individual_Assignment_Q10.coverage" NAME="Individual Assignment Q10 Coverage Results" MODIFIED="1742551372640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$Scores.coverage" NAME="Scores Coverage Results" MODIFIED="1740495105566" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$MySQL_project.coverage" NAME="MySQL project Coverage Results" MODIFIED="1742563043270" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$Test__.coverage" NAME="Test:  Coverage Results" MODIFIED="1742379730160" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$Graphics_2.coverage" NAME="Graphics 2 Coverage Results" MODIFIED="1742148988838" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$django_manage.coverage" NAME="django_manage Coverage Results" MODIFIED="1741716229989" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_HOME_DIR$/plugins/python-ce/helpers/pycharm" />
