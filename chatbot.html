@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lings Medical Chatbot</title>
+    <style>
+        body {
+            font-family: Tahoma, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+        .chat-container {
+            width: 400px;
+            margin: 50px auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .chat-header {
+            background: #007bff;
+            color: #fff;
+            padding: 15px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        .chat-box {
+            height: 300px;
+            overflow-y: auto;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        .message.user {
+            text-align: right;
+            margin-bottom: 10px;
+        }
+        .message.bot {
+            text-align: left;
+            margin-bottom: 10px;
+        }
+        .message.user span {
+            background: #dcf8c6;
+            padding: 8px 12px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        .message.bot span {
+            background: #e9ecef;
+            padding: 8px 12px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        .chat-input {
+            display: flex;
+            padding: 10px;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+        }
+        .chat-input button {
+            padding: 10px 20px;
+            margin-left: 10px;
+            border: none;
+            background: #007bff;
+            color: #fff;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        .chat-input button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>Lings Health Assistant</h2>
+        </div>
+        <div class="chat-box" id="chatBox">
+            <div class="message bot"><span>Hello! I'm here to help you identify symptoms of common diseases like cold, flu, hypertension, and diabetes. Please describe your symptoms.</span></div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Type your message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        const chatBox = document.getElementById('chatBox');
+        const userInput = document.getElementById('userInput');
+
+        function sendMessage() {
+            const userMessage = userInput.value.trim();
+            if (userMessage === "") return;
+
+            appendMessage(userMessage, 'user');
+            userInput.value = "";
+
+            setTimeout(() => {
+                const botResponse = getBotResponse(userMessage.toLowerCase());
+                appendMessage(botResponse, 'bot');
+            }, 500);
+        }
+
+        function appendMessage(message, sender) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', sender);
+            messageElement.innerHTML = `<span>${message}</span>`;
+            chatBox.appendChild(messageElement);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function getBotResponse(input) {
+            if (input.includes("cold") || input.includes("runny nose") || input.includes("sore throat")| input.includes("sneezing")) {
+                return "Based on your symptoms, it seems like you might have a common cold. Rest, stay hydrated, and consider over-the-counter medications.";
+            } else if (input.includes("flu") || input.includes("fever") || input.includes("body ache")| input.includes("cough")) {
+                return "Your symptoms suggest you might have the flu. Stay hydrated, rest, and consult a doctor if the fever persists.";
+            } else if (input.includes("hypertension") || input.includes("high blood pressure") || input.includes("headache") || input.includes("dizziness")) {
+                return "You might be experiencing symptoms of hypertension. It's important to monitor your blood pressure and consult a healthcare provider.";
+            } else if (input.includes("diabetes") || input.includes("frequent urination") || input.includes("thirst") || input.includes("fatigue")) {
+                return "Your symptoms could indicate diabetes. Please consult a doctor for proper diagnosis and management.";
+            } else {
+                return "I'm sorry, I couldn't identify any specific condition based on your symptoms. Please consult a healthcare professional for further advice.";
+            }
+        }
+
+        userInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancer Diagnosis Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .chat-container {
+            width: 500px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 2px solid #007bff;
+        }
+        .chat-header {
+            background: #007bff;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .chat-box {
+            height: 300px;
+            overflow-y: auto;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        .message.user {
+            text-align: right;
+            margin-bottom: 10px;
+        }
+        .message.bot {
+            text-align: left;
+            margin-bottom: 10px;
+        }
+        .message.user span {
+            background: #dcf8c6;
+            padding: 10px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            max-width: 70%;
+        }
+        .message.bot span {
+            background: #e9ecef;
+            padding: 10px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            max-width: 70%;
+        }
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            background: #f9f9f9;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+            font-size: 1rem;
+        }
+        .chat-input button {
+            padding: 10px 15px;
+            margin-left: 10px;
+            border: none;
+            background: #007bff;
+            color: #fff;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .chat-input button:hover {
+            background: #0056b3;
+        }
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cancer Diagnosis Chatbot</h1>
+    <div class="chat-container">
+        <div class="chat-header">Cancer Diagnosis Bot</div>
+        <div class="chat-box" id="chatBox">
+            <div class="message bot"><span>Hello! I'm here to help diagnose cancer types based on your symptoms. Please describe your symptoms (e.g., lump, fatigue).</span></div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Describe your symptoms...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    <div class="footer">Created with lingsfiles</div>
+
+    <script>
+        const chatBox = document.getElementById('chatBox');
+        const userInput = document.getElementById('userInput');
+
+        // Database of cancer types
+        const cancers = [
+            {
+                name: "Breast Cancer",
+                symptoms: ["lump in breast", "breast pain", "nipple discharge", "skin changes"],
+                diagnosis: "Mammogram, biopsy, ultrasound",
+                treatment: "Surgery, radiation therapy, chemotherapy, hormone therapy",
+                fuzzyWeights: [0.9, 0.8, 0.7, 0.6]
+            },
+            {
+                name: "Lung Cancer",
+                symptoms: ["persistent cough", "shortness of breath", "chest pain", "coughing up blood"],
+                diagnosis: "Chest X-ray, CT scan, biopsy",
+                treatment: "Surgery, chemotherapy, radiation therapy, targeted therapy",
+                fuzzyWeights: [0.9, 0.8, 0.7, 0.6]
+            },
+            {
+                name: "Prostate Cancer",
+                symptoms: ["difficulty urinating", "blood in urine", "pain in pelvic area", "erectile dysfunction"],
+                diagnosis: "PSA test, digital rectal exam, biopsy",
+                treatment: "Surgery, radiation therapy, hormone therapy, chemotherapy",
+                fuzzyWeights: [0.9, 0.8, 0.7, 0.6]
+            },
+            {
+                name: "Colorectal Cancer",
+                symptoms: ["rectal bleeding", "abdominal pain", "changes in bowel habits", "weight loss"],
+                diagnosis: "Colonoscopy, biopsy, imaging tests",
+                treatment: "Surgery, chemotherapy, radiation therapy, immunotherapy",
+                fuzzyWeights: [0.9, 0.8, 0.7, 0.6]
+            },
+            {
+                name: "Skin Cancer",
+                symptoms: ["new mole or growth", "change in existing mole", "itchy or painful skin", "ulcer that won't heal"],
+                diagnosis: "Skin examination, biopsy",
+                treatment: "Surgery, radiation therapy, chemotherapy, immunotherapy",
+                fuzzyWeights: [0.9, 0.8, 0.7, 0.6]
+            },
+            {
+                name: "Leukemia",
+                symptoms: ["fatigue", "frequent infections", "easy bruising", "weight loss"],
+                diagnosis: "Blood tests, bone marrow biopsy",
+                treatment: "Chemotherapy, radiation therapy, stem cell transplant",
+                fuzzyWeights: [0.9, 0.8, 0.7, 0.6]
+            }
+        ];
+
+        function sendMessage() {
+            const userMessage = userInput.value.trim().toLowerCase();
+            if (userMessage === "") return;
+
+            appendMessage(userMessage, 'user');
+            userInput.value = "";
+
+            setTimeout(() => {
+                const botResponse = diagnoseCancer(userMessage);
+                appendMessage(botResponse, 'bot');
+            }, 500);
+        }
+
+        function diagnoseCancer(input) {
+            const userSymptoms = input.split(",").map(symptom => symptom.trim());
+
+            // Calculate fuzzy scores for each cancer type
+            const scores = cancers.map(cancer => {
+                let score = 0;
+                cancer.symptoms.forEach((symptom, index) => {
+                    if (userSymptoms.includes(symptom)) {
+                        score += cancer.fuzzyWeights[index];
+                    }
+                });
+                return { name: cancer.name, score: score, diagnosis: cancer.diagnosis, treatment: cancer.treatment };
+            });
+
+            // Find the cancer type with the highest score
+            scores.sort((a, b) => b.score - a.score);
+            const topCancer = scores[0];
+
+            if (topCancer.score > 0) {
+                return `Based on your symptoms, you might have ${topCancer.name}.
+                        <br><strong>Diagnosis:</strong> ${topCancer.diagnosis}.
+                        <br><strong>Treatment:</strong> ${topCancer.treatment}.
+                        <br>Please consult a doctor for confirmation.`;
+            } else {
+                return "I couldn't identify any specific cancer type based on your symptoms. Please consult a healthcare professional.";
+            }
+        }
+
+        function appendMessage(message, sender) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', sender);
+            messageElement.innerHTML = `<span>${message}</span>`;
+            chatBox.appendChild(messageElement);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        userInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>

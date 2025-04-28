@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suspense Account Monitor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        /* Custom Styles */
+        body {
+            font-family: 'Inter', sans-serif; /* Using Inter font */
+            background-color: #f0fdf4; /* Very light green background */
+        }
+        /* Define Locust Green and Dark Green using standard Tailwind shades */
+        .bg-locust-green { background-color: #84cc16; } /* lime-500 */
+        .bg-dark-green { background-color: #15803d; } /* green-700 */
+        .text-dark-green { color: #14532d; } /* green-900 */
+        .border-dark-green { border-color: #15803d; }
+
+        /* Style for editable cells */
+        .editable-cell {
+            padding: 6px 8px;
+            border: 1px solid transparent; /* Make border appear on focus/hover */
+            min-width: 60px; /* Adjusted min-width */
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+            cursor: pointer;
+            vertical-align: middle; /* Ensure vertical alignment */
+        }
+        .editable-cell:hover {
+             background-color: #f3f4f6; /* gray-100 */
+             border-color: #d1d5db; /* gray-300 */
+        }
+        .editable-cell:focus {
+            outline: 2px solid #16a34a; /* green-600 */
+            background-color: #ecfdf5; /* green-50 */
+            border-color: #16a34a; /* green-600 */
+        }
+        .balance-cell {
+             text-align: right;
+        }
+        .currency-cell, .balancing-cell {
+             text-align: center;
+        }
+        .remarks-cell {
+            min-width: 150px; /* Give more space for remarks */
+        }
+
+        /* Ensure table layout is fixed */
+        .table-fixed-layout {
+            table-layout: fixed;
+            width: 100%;
+        }
+
+        /* Style for buttons */
+        .btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem; /* space between icon and text */
+        }
+        .btn-primary {
+            background-color: #16a34a; /* green-600 */
+            color: white;
+            border: 1px solid #15803d; /* green-700 */
+        }
+        .btn-primary:hover {
+            background-color: #15803d; /* green-700 */
+        }
+         .btn-secondary {
+            background-color: #6b7280; /* gray-500 */
+            color: white;
+            border: 1px solid #4b5563; /* gray-600 */
+         }
+         .btn-secondary:hover {
+             background-color: #4b5563; /* gray-600 */
+         }
+         .btn-icon {
+             padding: 6px;
+             border-radius: 4px;
+             background-color: #f87171; /* red-400 */
+             color: white;
+         }
+         .btn-icon:hover {
+             background-color: #ef4444; /* red-500 */
+         }
+
+        /* Footer styling */
+        .footer {
+            margin-top: 2rem;
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.875rem; /* text-sm */
+            color: #4b5563; /* gray-600 */
+            border-top: 1px solid #d1d5db; /* gray-300 */
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-md border border-dark-green">
+
+        <div class="flex flex-col md:flex-row justify-between items-center mb-6 pb-4 border-b border-dark-green">
+            <h1 class="text-2xl font-bold text-dark-green mb-4 md:mb-0">SUSPENSE ACCOUNTS LISTING</h1>
+            <div class="flex items-center gap-4">
+                <label for="report-date" class="font-medium text-dark-green">Date:</label>
+                <input type="date" id="report-date" class="border border-gray-300 rounded px-2 py-1">
+            </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row justify-between items-start gap-4 mb-4">
+             <div class="flex gap-4">
+                 <button id="add-account-btn" class="btn btn-primary">
+                    <i class="fas fa-plus mr-1"></i> Add Account
+                </button>
+                <button id="download-excel-btn" class="btn btn-primary">
+                    <i class="fas fa-file-excel mr-1"></i> Download Excel
+                </button>
+            </div>
+            <div class="flex flex-col md:flex-row gap-4">
+                 <div>
+                    <label for="prepared-by" class="block text-sm font-medium text-gray-700">Prepared By:</label>
+                    <input type="text" id="prepared-by" placeholder="Name" class="border border-gray-300 rounded px-2 py-1 mt-1 w-full md:w-auto">
+                 </div>
+                 <div>
+                    <label for="checked-by" class="block text-sm font-medium text-gray-700">Checked By:</label>
+                    <input type="text" id="checked-by" placeholder="Name" class="border border-gray-300 rounded px-2 py-1 mt-1 w-full md:w-auto">
+                 </div>
+            </div>
+        </div>
+
+
+        <div id="add-account-form" class="hidden mb-4 p-4 border border-dark-green rounded bg-lime-50">
+            <h3 class="text-lg font-semibold mb-2 text-dark-green">Add New Suspense Account</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-3">
+                <input type="text" id="new-account-number" placeholder="Account Number" class="border rounded p-2">
+                <input type="text" id="new-account-name" placeholder="Account Name" class="border rounded p-2">
+                <input type="text" id="new-currency" placeholder="Currency" class="border rounded p-2">
+                <input type="number" id="new-balance" placeholder="Balance" class="border rounded p-2">
+                 <select id="new-balancing" class="border rounded p-2">
+                     <option value="">Balancing?</option>
+                     <option value="Y">Y</option>
+                     <option value="N">N</option>
+                 </select>
+            </div>
+             <div class="mb-3">
+                 <textarea id="new-remarks" placeholder="Remarks" class="border rounded p-2 w-full" rows="2"></textarea>
+            </div>
+             <div class="text-right">
+                 <button id="save-account-btn" class="btn btn-primary mr-2">Save</button>
+                 <button id="cancel-add-btn" class="btn btn-secondary">Cancel</button>
+            </div>
+        </div>
+
+
+        <div class="overflow-x-auto">
+            <table id="accounts-table" class="min-w-full border-collapse border border-dark-green table-fixed-layout">
+                <thead>
+                    <tr class="bg-dark-green text-white text-sm">
+                        <th class="border border-lime-600 p-2 w-[5%]">Action</th>
+                        <th class="border border-lime-600 p-2 w-[15%]">Account Number</th>
+                        <th class="border border-lime-600 p-2 w-[25%]">Account Name</th>
+                        <th class="border border-lime-600 p-2 w-[10%]">Currency</th>
+                        <th class="border border-lime-600 p-2 w-[10%]">Balance</th>
+                        <th class="border border-lime-600 p-2 w-[10%]">Balancing (Y/N)</th>
+                        <th class="border border-lime-600 p-2 w-[25%]">Remarks</th>
+                    </tr>
+                </thead>
+                <tbody id="accounts-tbody" class="text-sm">
+                    </tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            <div>Designed by Lingani</div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- DOM Element References ---
+            const reportDateInput = document.getElementById('report-date');
+            const accountsTable = document.getElementById('accounts-table');
+            const accountsTbody = document.getElementById('accounts-tbody');
+            const addAccountBtn = document.getElementById('add-account-btn');
+            const addAccountForm = document.getElementById('add-account-form');
+            const saveAccountBtn = document.getElementById('save-account-btn');
+            const cancelAddBtn = document.getElementById('cancel-add-btn');
+            const downloadExcelBtn = document.getElementById('download-excel-btn');
+            // Add form inputs
+            const newAccountNumberInput = document.getElementById('new-account-number');
+            const newAccountNameInput = document.getElementById('new-account-name');
+            const newCurrencyInput = document.getElementById('new-currency');
+            const newBalanceInput = document.getElementById('new-balance');
+            const newBalancingSelect = document.getElementById('new-balancing');
+            const newRemarksTextarea = document.getElementById('new-remarks');
+            // Export info inputs
+            const preparedByInput = document.getElementById('prepared-by');
+            const checkedByInput = document.getElementById('checked-by');
+
+
+            const storageKey = 'suspenseAccountsData_v4'; // Updated storage key for new structure
+
+            // Data structure: [{id, number, name, currency, balance, balancing, remarks}, ...]
+            let accountsData = [];
+
+            // --- Date Initialization ---
+            const today = new Date().toISOString().split('T')[0]; // Get YYYY-MM-DD format
+            reportDateInput.value = today; // Set default date to today
+
+            // --- Utility Functions ---
+            const saveData = () => {
+                // Saves the current state of accountsData to browser's local storage
+                localStorage.setItem(storageKey, JSON.stringify(accountsData));
+                console.log("Data saved:", accountsData); // Log for debugging purposes
+            };
+
+            const loadData = () => {
+                // Loads data from local storage if available
+                const storedData = localStorage.getItem(storageKey);
+                if (storedData) {
+                    try {
+                        accountsData = JSON.parse(storedData);
+                        // Basic validation: Ensure it's an array
+                        if (!Array.isArray(accountsData)) {
+                            console.error("Loaded data is not an array, resetting.");
+                            accountsData = [];
+                        }
+                        // Ensure new fields exist and balance is a number for each loaded account
+                        accountsData.forEach(acc => {
+                             acc.balance = parseFloat(acc.balance) || 0; // Convert balance to float, default 0
+                             acc.balancing = acc.balancing || ''; // Initialize 'balancing' if missing
+                             acc.remarks = acc.remarks || '';   // Initialize 'remarks' if missing
+                        });
+
+                    } catch (e) {
+                        // Handle errors during parsing (e.g., corrupted data)
+                        console.error("Error parsing stored data:", e);
+                        accountsData = []; // Reset to empty array if parsing fails
+                    }
+                } else {
+                    // Initialize with sample data if no data is found in local storage
+                    accountsData = [
+                        { id: Date.now() + 1, number: '100000344502', name: 'MOBILE AGENCY', currency: 'ZWG', balance: 1500.50, balancing: 'Y', remarks: 'Checked daily' },
+                        { id: Date.now() + 2, number: '131002001', name: 'USD VAULT', currency: 'USD', balance: 5200.00, balancing: 'Y', remarks: '' },
+                        { id: Date.now() + 3, number: '141003002', name: 'POS ZWG', currency: 'ZWG', balance: 0.00, balancing: 'N', remarks: 'Needs investigation' }
+                    ];
+                    saveData(); // Save the initial sample data
+                }
+                 console.log("Data loaded:", accountsData); // Log loaded data for debugging
+            };
+
+            // Format balance for display (e.g., 1500.50)
+            const formatBalance = (value) => {
+                 const num = parseFloat(value);
+                 // Return formatted string or '0.00' if value is not a valid number
+                 return isNaN(num) ? '0.00' : num.toFixed(2);
+            }
+
+            // --- Table Rendering ---
+            const renderTable = () => {
+                // Clears and redraws the accounts table based on the current accountsData
+                accountsTbody.innerHTML = ''; // Clear existing table body
+
+                // Iterate over each account in the data array
+                accountsData.forEach(account => {
+                    const row = document.createElement('tr'); // Create a new table row
+                    row.dataset.accountId = account.id; // Store account ID on the row for later reference
+
+                    // 1. Action Button Cell (Remove)
+                    const actionCell = document.createElement('td');
+                    actionCell.className = 'border p-1 text-center align-middle'; // Styling
+                    const removeBtn = document.createElement('button');
+                    removeBtn.className = 'btn-icon remove-account-btn'; // Styling for the button
+                    removeBtn.innerHTML = '<i class="fas fa-trash-alt text-xs"></i>'; // Font Awesome trash icon
+                    removeBtn.onclick = () => removeAccount(account.id); // Add click handler to remove account
+                    actionCell.appendChild(removeBtn);
+                    row.appendChild(actionCell);
+
+                    // 2. Account Details Cells (Editable)
+                    // Define the fields and their properties for easier iteration
+                    const fields = [
+                        { key: 'number', align: 'left', type: 'text' },
+                        { key: 'name', align: 'left', type: 'text' },
+                        { key: 'currency', align: 'center', type: 'text' },
+                        { key: 'balance', align: 'right', type: 'number' },
+                        { key: 'balancing', align: 'center', type: 'yn' }, // Special type for Y/N validation
+                        { key: 'remarks', align: 'left', type: 'text' }
+                    ];
+
+                    // Create a cell for each field
+                    fields.forEach(fieldInfo => {
+                        const field = fieldInfo.key;
+                        const cell = document.createElement('td');
+                        // Apply base styling, alignment, and make editable
+                        cell.className = `border p-2 align-middle editable-cell text-${fieldInfo.align}`;
+                        cell.contentEditable = true; // Make the cell directly editable
+                        cell.dataset.field = field; // Store which field this cell represents
+                        let displayValue = account[field]; // Get the current value from the account data
+
+                        // Apply specific formatting or classes based on the field
+                        if (field === 'balance') {
+                            cell.classList.add('balance-cell'); // Add specific class for balance styling
+                            displayValue = formatBalance(account[field]); // Format the number
+                        } else if (field === 'balancing') {
+                             cell.classList.add('balancing-cell'); // Add specific class
+                             displayValue = (account[field] || '').toUpperCase(); // Display Y/N uppercase or empty
+                        } else if (field === 'remarks') {
+                            cell.classList.add('remarks-cell'); // Add specific class for remarks styling
+                        }
+
+                        cell.textContent = displayValue; // Set the cell's initial text content
+
+                        // Add event listener to save changes when the cell loses focus
+                        cell.addEventListener('blur', handleCellEdit);
+
+                        // Prevent pasting rich text (like formatted text from Word)
+                        cell.addEventListener('paste', (e) => {
+                            e.preventDefault(); // Stop the default paste behavior
+                            const text = e.clipboardData.getData('text/plain'); // Get plain text from clipboard
+                            document.execCommand('insertText', false, text); // Insert the plain text
+                        });
+
+                         // Add specific input restriction listeners based on field type
+                         if (field === 'balance') {
+                             cell.addEventListener('keypress', restrictToNumber); // Only allow numbers/decimal
+                         } else if (field === 'balancing') {
+                             cell.addEventListener('keypress', restrictToYN); // Only allow Y or N
+                         }
+
+                        row.appendChild(cell); // Add the completed cell to the row
+                    });
+
+                    accountsTbody.appendChild(row); // Add the completed row to the table body
+                });
+            };
+
+             // --- Input Restriction Helpers ---
+             // Prevents non-numeric characters (except '.') in balance fields
+             const restrictToNumber = (e) => {
+                const cell = e.target;
+                const char = String.fromCharCode(e.which);
+                // Allow: digits (0-9), one decimal point (.), backspace, delete, arrow keys
+                if (!/[\d.]/.test(char) && ![8, 46, 37, 39].includes(e.keyCode)) {
+                    e.preventDefault(); // Block the character
+                }
+                // Prevent entering a second decimal point
+                if (char === '.' && cell.textContent.includes('.')) {
+                    e.preventDefault();
+                }
+             };
+
+             // Restricts input to 'Y' or 'N' (case-insensitive) in balancing fields
+             const restrictToYN = (e) => {
+                const cell = e.target;
+                const char = String.fromCharCode(e.which).toUpperCase(); // Convert input to uppercase
+                 // Allow: Y, N, backspace, delete, arrow keys
+                if (!/[YN]/.test(char) && ![8, 46, 37, 39].includes(e.keyCode)) {
+                    e.preventDefault(); // Block the character
+                }
+                 // Prevent entering more than one character (Y or N) unless text is selected
+                 const selectedText = window.getSelection().toString();
+                if (cell.textContent.length >= 1 && selectedText.length === 0 && /[YN]/.test(char)) {
+                     e.preventDefault(); // Block if already Y or N and no text selected
+                 }
+             };
+
+
+             // --- Event Handlers ---
+
+             // Handles saving data when an editable cell loses focus (on blur)
+             const handleCellEdit = (e) => {
+                 const cell = e.target; // The cell that triggered the event
+                 const field = cell.dataset.field; // Get the field name (e.g., 'balance', 'remarks')
+                 const accountId = parseInt(cell.closest('tr').dataset.accountId); // Get the ID of the account row
+                 let newValue = cell.textContent.trim(); // Get the new value from the cell, trimmed
+
+                 // Find the corresponding account object in the data array
+                 const targetAccount = accountsData.find(acc => acc.id === accountId);
+                 if (!targetAccount) return; // Exit if account not found (shouldn't happen)
+
+                 // Validate and update data based on the field type
+                 if (field === 'balance') {
+                     const numericValue = parseFloat(newValue);
+                     // Check if the entered value is a valid number
+                     if (isNaN(numericValue)) {
+                         // If not valid, revert the cell display to the old formatted value
+                         cell.textContent = formatBalance(targetAccount[field]);
+                         alert("Invalid balance value. Please enter a number.");
+                         return; // Stop processing, don't save invalid data
+                     }
+                     newValue = numericValue; // Store the validated value as a number
+                     cell.textContent = formatBalance(newValue); // Update display with correct formatting
+                 } else if (field === 'currency') {
+                     newValue = newValue.toUpperCase(); // Convert currency code to uppercase
+                     cell.textContent = newValue; // Update the cell display
+                 } else if (field === 'balancing') {
+                     newValue = newValue.toUpperCase(); // Convert to uppercase
+                     // Allow only 'Y', 'N', or empty string
+                     if (newValue !== 'Y' && newValue !== 'N') {
+                          newValue = ''; // Clear the value if it's not Y or N
+                     }
+                     cell.textContent = newValue; // Update the cell display (Y, N, or empty)
+                 }
+                 // No specific validation needed for number, name, remarks beyond trimming whitespace
+
+                 // Update the corresponding field in the account data object
+                 targetAccount[field] = newValue;
+                 saveData(); // Save the entire updated accountsData array to local storage
+             };
+
+
+            // Show the "Add Account" form when the button is clicked
+            addAccountBtn.addEventListener('click', () => {
+                addAccountForm.classList.remove('hidden'); // Make the form visible
+                addAccountBtn.classList.add('hidden'); // Hide the "Add Account" button itself
+            });
+
+            // Hide the "Add Account" form and clear fields when "Cancel" is clicked
+            cancelAddBtn.addEventListener('click', () => {
+                addAccountForm.classList.add('hidden'); // Hide the form
+                addAccountBtn.classList.remove('hidden'); // Show the "Add Account" button again
+                // Clear all input fields in the form
+                newAccountNumberInput.value = '';
+                newAccountNameInput.value = '';
+                newCurrencyInput.value = '';
+                newBalanceInput.value = '';
+                newBalancingSelect.value = ''; // Reset dropdown to default
+                newRemarksTextarea.value = '';
+            });
+
+            // Save a new account when the "Save" button in the form is clicked
+            saveAccountBtn.addEventListener('click', () => {
+                // Get values from the form, trim whitespace, and apply defaults/formatting
+                const number = newAccountNumberInput.value.trim();
+                const name = newAccountNameInput.value.trim();
+                const currency = newCurrencyInput.value.trim().toUpperCase();
+                const balance = parseFloat(newBalanceInput.value) || 0; // Default to 0 if invalid
+                const balancing = newBalancingSelect.value; // Gets 'Y', 'N', or ''
+                const remarks = newRemarksTextarea.value.trim();
+
+                // Basic validation: Ensure required fields are filled
+                if (number && name && currency) {
+                    // Create a new account object
+                    const newAccount = {
+                        id: Date.now(), // Use timestamp as a simple unique ID
+                        number,
+                        name,
+                        currency,
+                        balance,
+                        balancing,
+                        remarks
+                    };
+                    accountsData.push(newAccount); // Add the new account to the data array
+                    saveData(); // Save the updated array to local storage
+                    renderTable(); // Redraw the table to include the new account
+                    cancelAddBtn.click(); // Hide the form and clear fields automatically
+                } else {
+                    // Show an alert if required fields are missing
+                    alert('Please fill in Account Number, Name, and Currency.');
+                }
+            });
+
+             // Remove an account when the trash icon is clicked
+            const removeAccount = (accountId) => {
+                // Ask for confirmation before deleting
+                if (confirm('Are you sure you want to remove this account?')) {
+                    // Filter out the account with the matching ID
+                    accountsData = accountsData.filter(account => account.id !== accountId);
+                    saveData(); // Save the modified data array
+                    renderTable(); // Redraw the table without the removed account
+                }
+            };
+
+            // Handle downloading the data as an Excel file
+            downloadExcelBtn.addEventListener('click', () => {
+                // Get metadata for the export
+                const reportDate = reportDateInput.value;
+                const preparedBy = preparedByInput.value.trim();
+                const checkedBy = checkedByInput.value.trim();
+
+                // Prepare data array for the worksheet (aoa = array of arrays)
+                const wsData = [];
+
+                // 1. Add Header Info (Title, Date)
+                wsData.push(["SUSPENSE ACCOUNTS LISTING"]); // Main title
+                wsData.push([`Date: ${reportDate || 'Not Specified'}`]); // Report date
+                wsData.push([]); // Add a blank row for spacing
+
+                // 2. Add Table Header Row
+                const header = ['Account Number', 'Account Name', 'Currency', 'Balance', 'Balancing (Y/N)', 'Remarks'];
+                wsData.push(header);
+
+                // 3. Add Account Data Rows
+                accountsData.forEach(account => {
+                    const row = [
+                        account.number,
+                        account.name,
+                        account.currency,
+                        formatBalance(account.balance), // Use formatted balance
+                        account.balancing || '',        // Include balancing status (Y/N or empty)
+                        account.remarks || ''           // Include remarks
+                    ];
+                    wsData.push(row); // Add the account row to the worksheet data
+                });
+
+                // 4. Add Footer Info (Prepared By, Checked By)
+                wsData.push([]); // Add a blank row for spacing
+                wsData.push([`Prepared By: ${preparedBy || ''}`]); // Add Prepared By info
+                wsData.push([`Checked By: ${checkedBy || ''}`]);   // Add Checked By info
+
+                // Create Worksheet and Workbook using SheetJS (XLSX) library
+                const ws = XLSX.utils.aoa_to_sheet(wsData); // Convert array of arrays to worksheet
+
+                // --- Optional: Define column widths for better formatting ---
+                 const colWidths = [
+                     { wch: 20 }, // Account Number width
+                     { wch: 30 }, // Account Name width
+                     { wch: 10 }, // Currency width
+                     { wch: 15 }, // Balance width
+                     { wch: 15 }, // Balancing (Y/N) width
+                     { wch: 40 }  // Remarks width
+                 ];
+                 ws['!cols'] = colWidths; // Apply column widths to the worksheet
+                // --- End Optional Styling ---
+
+                const wb = XLSX.utils.book_new(); // Create a new workbook
+                XLSX.utils.book_append_sheet(wb, ws, `Suspense Accounts`); // Add the worksheet to the workbook
+
+                // Trigger the file download
+                const filenameDate = reportDate ? `_${reportDate}` : ''; // Add date to filename if selected
+                XLSX.writeFile(wb, `Suspense_Accounts${filenameDate}.xlsx`); // Generate and save the file
+            });
+
+
+            // --- Initial Load ---
+            loadData(); // Load data from local storage when the page loads
+            renderTable(); // Render the initial table display
+
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AFC Commercial Bank Balanced Scorecard Input Tool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0fdf4; /* Light green background */
+        }
+        /* Custom darkish green theme */
+        .bg-primary { background-color: #14532d; } /* dark green-800 */
+        .text-primary { color: #14532d; }
+        .border-primary { border-color: #14532d; }
+        .btn-primary {
+            background-color: #166534; /* dark green-700 */
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem; /* rounded-md */
+            transition: background-color 0.3s ease;
+            border: 1px solid #14532d; /* dark green-800 */
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background-color: #15803d; /* dark green-600 */
+        }
+        .btn-danger {
+             background-color: #dc2626; /* red-600 */
+             color: white;
+             padding: 0.25rem 0.5rem;
+             border-radius: 0.375rem; /* rounded-md */
+             transition: background-color 0.3s ease;
+             border: 1px solid #b91c1c; /* red-700 */
+             font-size: 0.875rem; /* text-sm */
+             cursor: pointer;
+        }
+        .btn-danger:hover {
+             background-color: #ef4444; /* red-500 */
+        }
+        th {
+            background-color: #dcfce7; /* light green-100 */
+            color: #14532d; /* dark green-800 */
+            padding: 0.75rem;
+            text-align: left;
+            font-weight: 600;
+            border: 1px solid #a7f3d0; /* green-200 */
+            font-size: 0.875rem; /* text-sm */
+        }
+        td {
+            padding: 0.5rem 0.75rem; /* Slightly reduced padding */
+            border: 1px solid #a7f3d0; /* green-200 */
+            vertical-align: middle;
+            font-size: 0.875rem; /* text-sm */
+        }
+        input[type="number"], input[type="text"], textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #a7f3d0; /* green-200 */
+            border-radius: 0.375rem; /* rounded-md */
+            box-sizing: border-box;
+            font-size: 0.875rem; /* text-sm */
+        }
+        input[type="number"]:focus, input[type="text"]:focus, textarea:focus {
+            outline: none;
+            border-color: #166534; /* dark green-700 */
+            box-shadow: 0 0 0 2px rgba(22, 101, 52, 0.3);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-radius: 0.375rem; /* rounded-md */
+            overflow: hidden; /* Ensures border radius applies to table */
+        }
+        .perspective-header {
+            background-color: #166534; /* dark green-700 */
+            color: white;
+            padding: 1rem;
+            font-size: 1.25rem; /* text-xl */
+            font-weight: 600;
+            border-radius: 0.375rem 0.375rem 0 0; /* rounded-t-md */
+            margin-top: 1.5rem;
+        }
+         .subtopic-header {
+            background-color: #22c55e; /* green-500 */
+            color: white;
+            padding: 0.75rem 1rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .total-row td {
+            font-weight: 600;
+            background-color: #f0fdf4; /* light green-50 */
+        }
+        .calculated {
+            background-color: #f0f4f8; /* Light gray for calculated fields */
+            text-align: center;
+        }
+        .weight-input {
+             min-width: 60px; /* Ensure weight input is not too small */
+             text-align: right;
+        }
+        .score-display {
+            min-width: 60px; /* Ensure score display is not too small */
+            text-align: center;
+        }
+        .comment-section {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: white;
+            border: 1px solid #a7f3d0; /* green-200 */
+            border-radius: 0.375rem; /* rounded-md */
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .comment-section h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #14532d; /* dark green-800 */
+            margin-bottom: 0.75rem;
+        }
+        .signature-section {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+            gap: 2rem; /* Add gap between signature blocks */
+        }
+        .signature-block {
+            border-top: 1px solid #a7f3d0; /* green-200 */
+            padding-top: 0.5rem;
+            width: 45%; /* Adjust width as needed */
+            text-align: center;
+        }
+        .signature-block label {
+            display: block;
+            margin-bottom: 0.25rem;
+            font-size: 0.9rem;
+            color: #374151; /* gray-700 */
+        }
+        .signature-block input[type="date"] {
+            margin-top: 0.5rem;
+            width: auto; /* Don't force date input to full width */
+        }
+         /* Adjust textarea height */
+        td textarea {
+            min-height: 38px; /* Match input height */
+            resize: vertical; /* Allow vertical resize */
+        }
+         #factors-table td textarea {
+             min-height: 38px;
+         }
+
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <h1 class="text-3xl font-bold text-primary mb-6 text-center">Lingani Ncube Balanced Scorecard Inala House Branch</h1>
+
+    <section id="financial-perspective">
+        <h2 class="perspective-header">Financial Perspective</h2>
+
+        <h3 class="subtopic-header">Financial Sustainability</h3>
+        <table data-perspective="financial" data-subtopic="sustainability">
+            <thead>
+                <tr>
+                    <th>Key Performance Indicator (KPI)</th>
+                    <th>Baseline Target</th>
+                    <th>Actual Achieved</th>
+                    <th>Weight (%)</th>
+                    <th>Actual Score (0-7)</th>
+                    <th>Weighted Score</th>
+                    <th>Performance Review</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-kpi="Net Profit">
+                    <td>Net Profit (USD)</td>
+                    <td><input type="number" class="baseline" placeholder="e.g., 1000000"></td>
+                    <td><input type="number" class="actual" placeholder="e.g., 1100000"></td>
+                    <td><input type="number" class="weight weight-input" placeholder="e.g., 10" min="0" max="100"></td>
+                    <td class="actual-score calculated score-display">-</td>
+                    <td class="weighted-score calculated score-display">-</td>
+                    <td><textarea rows="1" placeholder="Comments..."></textarea></td>
+                </tr>
+                 <tr data-kpi="USD Consumer Loans Growth (%)">
+                    <td>USD Consumer Loans Growth (%)</td>
+                    <td><input type="number" class="baseline" placeholder="e.g., 5"></td>
+                    <td><input type="number" class="actual" placeholder="e.g., 6"></td>
+                    <td><input type="number" class="weight weight-input" placeholder="e.g., 5" min="0" max="100"></td>
+                    <td class="actual-score calculated score-display">-</td>
+                    <td class="weighted-score calculated score-display">-</td>
+                    <td><textarea rows="1" placeholder="Comments..."></textarea></td>
+                </tr>
+                 <tr data-kpi="ZWG Consumer Loans Growth (%)">
+                    <td>ZWG Consumer Loans Growth (%)</td>
+                    <td><input type="number" class="baseline" placeholder="e.g., 15"></td>
+                    <td><input type="number" class="actual" placeholder="e.g., 18"></td>
+                    <td><input type="number" class="weight weight-input" placeholder="e.g., 5" min="0" max="100"></td>
+                    <td class="actual-score calculated score-display">-</td>
+                    <td class="weighted-score calculated score-display">-</td>
+                    <td><textarea rows="1" placeholder="Comments..."></textarea></td>
+                </tr>
+                 <tr data-kpi="USD Deposits Growth (%)">
+                    <td>USD Deposits Growth (%)</td>
+                    <td><input type="number" class="baseline" placeholder="e.g., 8"></td>
+                    <td><input type="number" class="actual" placeholder="e.g., 9"></td>
+                    <td><input type="number" class="weight weight-input" placeholder="e.g., 5" min="0" max="100"></td>
+                    <td class="actual-score calculated score-display">-</td>
+                    <td class="weighted-score calculated score-display">-</td>
+                    <td><textarea rows="1" placeholder="Comments..."></textarea></td>
+                </tr>
+                 <tr data-kpi="ZWG Deposits Growth (%)">
+                    <td>ZWG Deposits Growth (%)</td>
+                    <td><input type="number" class="baseline" placeholder="e.g., 20"></td>
+                    <td><input type="number" class="actual" placeholder="e.g., 22"></td>
+                    <td><input type="number" class="weight weight-input" placeholder="e.g., 5" min="0" max="100"></td>
+                    <td class="actual-score calculated score-display">-</td>
+                    <td class="weighted-score calculated score-display">-</td>
+                    <td><textarea rows="1" placeholder="Comments..."></textarea></td>
+                </tr>
+                 <tr data-kpi="Monthly ledger and service fees">
+                    <td>Non-Interest Income: Monthly ledger & service fees</td>
+                    <td><input type="number" class="baseline" placeholder="Target Value"></td>
+                    <td><input type="number" class="actual" placeholder="Actual Value"></td>
+                    <td><input type="number" class="weight weight-input" placeholder="Wt" min="0" max="100"></td>
+                    <td class="actual-score calculated score-display">-</td>
+                    <td class="weighted-score calculated score-display">-</td>
+                    <td><textarea rows="1" placeholder="Comments..."></textarea></td>
+                 </tr>
+                 <tr data-kpi="Cash withdrawal charges">
+                    <td>Non-Interest Income: Cash withdrawal charges</td>
+                    <td><input type="number" class="baseline" placeholder="Target Value"></td>
+                    <td><input type="number" class="actual" placeholder="Actual Value"></td>
+                    <td><input type="number" class="weight weight-input" placeholder="Wt" min="0" max="100"></td>
+                    <td class="actual-score calculated score-display">-</td>
+                    <td class="weighted-score calculated score-display">-</td>
+                    <td><textarea rows="1" placeholder="Comments..."></textarea></td>
+                 </tr>
+                 <tr data-kpi="RTGS and internal transfers">
+                    <td>Non-Interest Income: RTGS & internal transfers</td>
+                    <td><input type="number" class="baseline" placeholder="Target Value"></td>
+                    <td><input type="number" class="actual" placeholder="Actual Value"></td>
+                    <td><input type="number" class="weight weight-input" placeholder="Wt" min="0" max="100"></td>
+                    <td class="actual-score calculated score-display">-</td>
+                    <td class="weighted-score calculated score-display">-</td>
+                    <td><textarea rows="1" placeholder="Comments..."></textarea></td>
+                 </tr>
+                  <tr data-kpi="ZINARA commission">
+                    <td>Non-Interest Income: ZINARA commission</td>
+                    <td><input type="number" class="baseline" placeholder="Target Value"></td>
+                    <td><input type="number" class="actual" placeholder="Actual Value"></td>
+                    <td><input type="number" class="weight weight-input" placeholder="Wt" min="0" max="100"></td>
+                    <td class="actual-score calculated score-display">-</td>
+                    <td class="weighted-score calculated score-display">-</td>
+                    <td><textarea rows="1" placeholder="Comments..."></textarea></td>
+                 </tr>
+                  <tr data-kpi="ATM card issuance fees">
+                    <td>Non-Interest Income: ATM card issuance fees</td>
+                    <td><input type="number" class="baseline" placeholder="Target Value"></td>
+                    <td><input type="number" class="actual" placeholder="Actual Value"></td>
+                    <td><input type="number" class="weight weight-input" placeholder="Wt" min="0" max="100"></td>
+                    <td class="actual-score calculated score-display">-</td>
+                    <td class="weighted-score calculated score-display">-</td>
+                    <td><textarea rows="1" placeholder="Comments..."></textarea></td>
+                 </tr>
+                  <tr data-kpi="MTA Grand commission">
+                    <td>Non-Interest Income: MTA Grand commission</td>
+                    <td><input type="number" class="baseline" placeholder="Target Value"></td>
+                    <td><input type="number" class="actual" placeholder="Actual Value"></td>
+                    <td><input type="number" class="weight weight-input" placeholder="Wt" min="0" max="100"></td>
+                    <td class="actual-score calculated score-display">-</td>
+                    <td class="weighted-score calculated score-display">-</td>
+                    <td><textarea rows="1" placeholder="Comments..."></textarea></td>
+                 </tr>
+                  <tr data-kpi="Visa commission">
+                    <td>Non-Interest Income: Visa commission</td>
+                    <td><input type="number" class="baseline" placeholder="Target Value"></td>
+                    <td><input type="number" class="actual" placeholder="Actual Value"></td>
+                    <td><input type="number" class="weight weight-input" placeholder="Wt" min="0" max="100"></td>
+                    <td class="actual-score calculated score-display">-</td>
+                    <td class="weighted-score calculated score-display">-</td>
+                    <td><textarea rows="1" placeholder="Comments..."></textarea></td>
+                 </tr>
+                  <tr data-kpi="Zimswitch acquirer fees">
+                    <td>Non-Interest Income: Zimswitch acquirer fees</td>
+                    <td><input type="number" class="baseline" placeholder="Target Value"></td>
+                    <td><input type="number" class="actual" placeholder="Actual Value"></td>
+                    <td><input type="number" class="weight weight-input" placeholder="Wt" min="0" max="100"></td>
+                    <td class="actual-score calculated score-display">-</td>
+                    <td class="weighted-score calculated score-display">-</td>
+                    <td><textarea rows="1" placeholder="Comments..."></textarea></td>
+                 </tr>
+                  <tr data-kpi="POS commission">
+                    <td>Non-Interest Income: POS commission</td>
+                    <td><input type="number" class="baseline" placeholder="Target Value"></td>
+                    <td><input type="number" class="actual" placeholder="Actual Value"></td>
+                    <td><input type="number" class="weight weight-input" placeholder="Wt" min="0" max="100"></td>
+                    <td class="actual-score calculated score-display">-</td>
+                    <td class="weighted-score calculated score-display">-</td>
+                    <td><textarea rows="1" placeholder="Comments..."></textarea></td>
+                 </tr>
+                  <tr data-kpi="Insurance commission">
+                    <td>Non-Interest Income: Insurance commission</td>
+                    <td><input type="number" class="baseline" placeholder="Target Value"></td>
+                    <td><input type="number" class="actual" placeholder="Actual Value"></td>
+                    <td><input type="number" class="weight weight-input" placeholder="Wt" min="0" max="100"></td>
+                    <td class="actual-score calculated score-display">-</td>
+                    <td class="weighted-score calculated score-display">-</td>
+                    <td><textarea rows="1" placeholder="Comments..."></textarea></td>
+                 </tr>
+                </tbody>
+        </table>
+
+        <h3 class="subtopic-header">Cost Management</h3>
+        <table data-perspective="financial" data-subtopic="cost">
+             <thead>
+                <tr>
+                    <th>Key Performance Indicator (KPI)</th>
+                    <th>Baseline Target</th>
+                    <th>Actual Achieved</th>
+                    <th>Weight (%)</th>
+                    <th>Actual Score (0-7)</th>
+                    <th>Weighted Score</th>
+                    <th>Performance Review</th>
+                </tr>
+            </thead>
+            <tbody>
+                 <tr data-kpi="Cost-to-Income Ratio (%)">
+                    <td>Cost-to-Income Ratio (%)</td>
+                    <td><input type="number" class="baseline" placeholder="e.g., 55"></td> <td><input type="number" class="actual" placeholder="e.g., 53"></td>
+                    <td><input type="number" class="weight weight-input" placeholder="e.g., 5" min="0" max="100"></td>
+                    <td class="actual-score calculated score-display">-</td>
+                    <td class="weighted-score calculated score-display">-</td>
+                    <td><textarea rows="1" placeholder="Comments..."></textarea></td>
+                </tr>
+                 <tr data-kpi="Staff cost to income ratio (%)">
+                    <td>Staff cost to income ratio (%)</td>
+                    <td><input type="number" class="baseline" placeholder="e.g., 30"></td> <td><input type="number" class="actual" placeholder="e.g., 28"></td>
+                    <td><input type="number" class="weight weight-input" placeholder="e.g., 5" min="0" max="100"></td>
+                    <td class="actual-score calculated score-display">-</td>
+                    <td class="weighted-score calculated score-display">-</td>
+                    <td><textarea rows="1" placeholder="Comments..."></textarea></td>
+                </tr>
+            </tbody>
+             <tfoot>
+                <tr class="total-row">
+                    <td colspan="3" class="text-right font-semibold">Financial Perspective Totals:</td>
+                    <td class="total-weight text-center">-</td>
+                    <td></td> <td class="total-weighted-score text-center">-</td>
+                    <td></td> </tr>
+            </tfoot>
+        </table>
+    </section>
+
+    <section id="customer-perspective">
+        <h2 class="perspective-header">Customer Perspective</h2>
+
+        <h3 class="subtopic-header">New Client Acquisition</h3>
+         <table data-perspective="customer" data-subtopic="client-acquisition">
+             <thead>
+                <tr>
+                    <th>Key Performance Indicator (KPI)</th>
+                    <th>Baseline Target</th>
+                    <th>Actual Achieved</th>
+                    <th>Weight (%)</th>
+                    <th>Actual Score (0-7)</th>
+                    <th>Weighted Score</th>
+                    <th>Performance Review</th>
+                </tr>
+            </thead>
+            <tbody>
+                 <tr data-kpi="Number of New Clients">
+                    <td>Number of New Clients</td>
+                    <td><input type="number" class="baseline" placeholder="e.g., 500"></td>
+                    <td><input type="number" class="actual" placeholder="e.g., 550"></td>
+                    <td><input type="number" class="weight weight-input" placeholder="e.g., 10" min="0" max="100"></td>
+                    <td class="actual-score calculated score-display">-</td>
+                    <td class="weighted-score calculated score-display">-</td>
+                    <td><textarea rows="1" placeholder="Comments..."></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+
+         <h3 class="subtopic-header">New Account Acquisition</h3>
+         <table data-perspective="customer" data-subtopic="account-acquisition">
+             <thead>
+                <tr>
+                    <th>Key Performance Indicator (KPI)</th>
+                    <th>Baseline Target</th>
+                    <th>Actual Achieved</th>
+                    <th>Weight (%)</th>
+                    <th>Actual Score (0-7)</th>
+                    <th>Weighted Score</th>
+                    <th>Performance Review</th>
+                </tr>
+            </thead>
+            <tbody>
+                 <tr data-kpi="Number of New Accounts per Client"> <td>Number of New Accounts per Client</td>
+                    <td><input type="number" step="0.1" class="baseline" placeholder="e.g., 1.5"></td>
+                    <td><input type="number" step="0.1" class="actual" placeholder="e.g., 1.6"></td>
+                    <td><input type="number" class="weight weight-input" placeholder="e.g., 5" min="0" max="100"></td>
+                    <td class="actual-score calculated score-display">-</td>
+                    <td class="weighted-score calculated score-display">-</td>
+                    <td><textarea rows="1" placeholder="Comments..."></textarea></td>
+                </tr>
+            </tbody>
+             <tfoot>
+                <tr class="total-row">
+                    <td colspan="3" class="text-right font-semibold">Customer Perspective Totals:</td>
+                    <td class="total-weight text-center">-</td>
+                    <td></td>
+                    <td class="total-weighted-score text-center">-</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    </section>
+
+    <section id="internal-processes-perspective">
+        <h2 class="perspective-header">Internal Business Processes</h2>
+
+        <h3 class="subtopic-header">Risk and Governance</h3>
+         <table data-perspective="internal" data-subtopic="risk-governance">
+             <thead>
+                <tr>
+                    <th>Key Performance Indicator (KPI)</th>
+                    <th>Baseline Target</th>
+                    <th>Actual Achieved</th>
+                    <th>Weight (%)</th>
+                    <th>Actual Score (0-7)</th>
+                    <th>Weighted Score</th>
+                    <th>Performance Review</th>
+                </tr>
+            </thead>
+            <tbody>
+                 <tr data-kpi="Audit Findings Closure Rate (%)">
+                    <td>Audit Findings Closure Rate (%)</td>
+                    <td><input type="number" class="baseline" placeholder="e.g., 95"></td>
+                    <td><input type="number" class="actual" placeholder="e.g., 98"></td>
+                    <td><input type="number" class="weight weight-input" placeholder="e.g., 5" min="0" max="100"></td>
+                    <td class="actual-score calculated score-display">-</td>
+                    <td class="weighted-score calculated score-display">-</td>
+                    <td><textarea rows="1" placeholder="Comments..."></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+
+         <h3 class="subtopic-header">Frauds Management</h3>
+         <table data-perspective="internal" data-subtopic="fraud">
+             <thead>
+                <tr>
+                    <th>Key Performance Indicator (KPI)</th>
+                    <th>Baseline Target</th>
+                    <th>Actual Achieved</th>
+                    <th>Weight (%)</th>
+                    <th>Actual Score (0-7)</th>
+                    <th>Weighted Score</th>
+                    <th>Performance Review</th>
+                </tr>
+            </thead>
+            <tbody>
+                 <tr data-kpi="Fraud Losses (Value)">
+                    <td>Fraud Losses (Value)</td>
+                    <td><input type="number" class="baseline" placeholder="e.g., 50000"></td> <td><input type="number" class="actual" placeholder="e.g., 45000"></td>
+                    <td><input type="number" class="weight weight-input" placeholder="e.g., 5" min="0" max="100"></td>
+                    <td class="actual-score calculated score-display">-</td>
+                    <td class="weighted-score calculated score-display">-</td>
+                    <td><textarea rows="1" placeholder="Comments..."></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+
+         <h3 class="subtopic-header">Partnerships</h3>
+         <table data-perspective="internal" data-subtopic="partnerships">
+             <thead>
+                <tr>
+                    <th>Key Performance Indicator (KPI)</th>
+                    <th>Baseline Target</th>
+                    <th>Actual Achieved</th>
+                    <th>Weight (%)</th>
+                    <th>Actual Score (0-7)</th>
+                    <th>Weighted Score</th>
+                    <th>Performance Review</th>
+                </tr>
+            </thead>
+            <tbody>
+                 <tr data-kpi="New Strategic Partnerships Signed">
+                    <td>New Strategic Partnerships Signed</td>
+                    <td><input type="number" class="baseline" placeholder="e.g., 3"></td>
+                    <td><input type="number" class="actual" placeholder="e.g., 4"></td>
+                    <td><input type="number" class="weight weight-input" placeholder="e.g., 5" min="0" max="100"></td>
+                    <td class="actual-score calculated score-display">-</td>
+                    <td class="weighted-score calculated score-display">-</td>
+                    <td><textarea rows="1" placeholder="Comments..."></textarea></td>
+                </tr>
+            </tbody>
+             <tfoot>
+                <tr class="total-row">
+                    <td colspan="3" class="text-right font-semibold">Internal Processes Totals:</td>
+                    <td class="total-weight text-center">-</td>
+                    <td></td>
+                    <td class="total-weighted-score text-center">-</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    </section>
+
+    <section id="learning-growth-perspective">
+        <h2 class="perspective-header">Learning & Growth</h2>
+
+        <h3 class="subtopic-header">Performance Management</h3>
+         <table data-perspective="learning" data-subtopic="performance">
+             <thead>
+                <tr>
+                    <th>Key Performance Indicator (KPI)</th>
+                    <th>Baseline Target</th>
+                    <th>Actual Achieved</th>
+                    <th>Weight (%)</th>
+                    <th>Actual Score (0-7)</th>
+                    <th>Weighted Score</th>
+                    <th>Performance Review</th>
+                </tr>
+            </thead>
+            <tbody>
+                 <tr data-kpi="Performance Appraisals Completed On Time (%)">
+                    <td>Performance Appraisals Completed On Time (%)</td>
+                    <td><input type="number" class="baseline" placeholder="e.g., 100"></td>
+                    <td><input type="number" class="actual" placeholder="e.g., 100"></td>
+                    <td><input type="number" class="weight weight-input" placeholder="e.g., 5" min="0" max="100"></td>
+                    <td class="actual-score calculated score-display">-</td>
+                    <td class="weighted-score calculated score-display">-</td>
+                    <td><textarea rows="1" placeholder="Comments..."></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+
+         <h3 class="subtopic-header">Corporate Culture</h3>
+         <table data-perspective="learning" data-subtopic="culture">
+             <thead>
+                <tr>
+                    <th>Key Performance Indicator (KPI)</th>
+                    <th>Baseline Target</th>
+                    <th>Actual Achieved</th>
+                    <th>Weight (%)</th>
+                    <th>Actual Score (0-7)</th>
+                    <th>Weighted Score</th>
+                    <th>Performance Review</th>
+                </tr>
+            </thead>
+            <tbody>
+                 <tr data-kpi="Employee Engagement Score (Survey Result %)">
+                    <td>Employee Engagement Score (Survey Result %)</td>
+                    <td><input type="number" class="baseline" placeholder="e.g., 75"></td>
+                    <td><input type="number" class="actual" placeholder="e.g., 80"></td>
+                    <td><input type="number" class="weight weight-input" placeholder="e.g., 5" min="0" max="100"></td>
+                    <td class="actual-score calculated score-display">-</td>
+                    <td class="weighted-score calculated score-display">-</td>
+                    <td><textarea rows="1" placeholder="Comments..."></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+
+         <h3 class="subtopic-header">Learning and Development</h3>
+         <table data-perspective="learning" data-subtopic="development">
+             <thead>
+                <tr>
+                    <th>Key Performance Indicator (KPI)</th>
+                    <th>Baseline Target</th>
+                    <th>Actual Achieved</th>
+                    <th>Weight (%)</th>
+                    <th>Actual Score (0-7)</th>
+                    <th>Weighted Score</th>
+                    <th>Performance Review</th>
+                </tr>
+            </thead>
+            <tbody>
+                 <tr data-kpi="Average Training Hours per Employee">
+                    <td>Average Training Hours per Employee</td>
+                    <td><input type="number" class="baseline" placeholder="e.g., 20"></td>
+                    <td><input type="number" class="actual" placeholder="e.g., 25"></td>
+                    <td><input type="number" class="weight weight-input" placeholder="e.g., 5" min="0" max="100"></td>
+                    <td class="actual-score calculated score-display">-</td>
+                    <td class="weighted-score calculated score-display">-</td>
+                    <td><textarea rows="1" placeholder="Comments..."></textarea></td>
+                </tr>
+            </tbody>
+             <tfoot>
+                <tr class="total-row">
+                    <td colspan="3" class="text-right font-semibold">Learning & Growth Totals:</td>
+                    <td class="total-weight text-center">-</td>
+                    <td></td>
+                    <td class="total-weighted-score text-center">-</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    </section>
+
+     <section class="mt-8 p-4 bg-green-100 border border-green-300 rounded-md shadow">
+        <h2 class="text-xl font-semibold text-primary mb-2 text-center">Overall Summary</h2>
+        <div class="flex justify-around items-center">
+            <div class="text-center">
+                <span class="block text-sm text-gray-600">Total Weight (%)</span>
+                <span id="overall-total-weight" class="text-2xl font-bold text-primary">0%</span>
+            </div>
+            <div class="text-center">
+                 <span class="block text-sm text-gray-600">Overall Weighted Score</span>
+                <span id="overall-weighted-score" class="text-2xl font-bold text-primary">0.00</span>
+            </div>
+        </div>
+        <p id="weight-warning" class="text-center text-red-600 font-semibold mt-2 hidden">Warning: Total weight does not equal 100%.</p>
+    </section>
+
+
+    <section class="comment-section" id="factors-outside-control">
+        <h3>Factors Outside Appraisee's Control</h3>
+        <table id="factors-table">
+            <thead>
+                <tr>
+                    <th class="w-1/3">Factor</th>
+                    <th class="w-1/3">Reason</th>
+                    <th class="w-1/3">Action Taken/Proposed</th>
+                    <th class="w-auto"></th> </tr>
+            </thead>
+            <tbody>
+                </tbody>
+        </table>
+        <button id="add-factor-row" class="btn-primary mt-2 text-sm">Add Factor</button>
+    </section>
+
+    <section class="comment-section" id="comments-section">
+        <h3>Appraiser Comments</h3>
+        <textarea id="appraiser-comments" rows="4" placeholder="Enter appraiser comments here..."></textarea>
+
+        <h3 class="mt-4">Appraisee Comments</h3>
+        <textarea id="appraisee-comments" rows="4" placeholder="Enter appraisee comments here..."></textarea>
+    </section>
+
+    <section class="comment-section" id="signature-section">
+         <h3>Signatures</h3>
+         <div class="signature-section">
+             <div class="signature-block">
+                 <label for="appraisee-signature">Appraisee Signature:</label>
+                 <input type="text" id="appraisee-signature" placeholder="Type name to sign" class="border-b border-gray-400 focus:outline-none focus:border-primary text-center">
+                 <label for="appraisee-date" class="mt-2">Date:</label>
+                 <input type="date" id="appraisee-date">
+             </div>
+             <div class="signature-block">
+                 <label for="appraiser-signature">Appraiser Signature:</label>
+                 <input type="text" id="appraiser-signature" placeholder="Type name to sign" class="border-b border-gray-400 focus:outline-none focus:border-primary text-center">
+                 <label for="appraiser-date" class="mt-2">Date:</label>
+                 <input type="date" id="appraiser-date">
+             </div>
+         </div>
+    </section>
+
+    <div class="mt-8 text-center">
+        <button id="export-excel" class="btn-primary text-lg px-6 py-2">Export to Excel</button>
+    </div>
+
+
+    <script>
+        // --- Calculation Logic ---
+
+        function calculateActualScore(actual, baseline, kpiName) {
+            // Handle zero baseline to avoid division by zero
+            if (baseline === 0 || baseline === null || isNaN(baseline)) {
+                 // If actual is also 0 or invalid, score is 0. If actual > 0, it's infinite growth (score 7)
+                 return (actual === 0 || actual === null || isNaN(actual)) ? 0 : 7;
+            }
+             if (actual === null || isNaN(actual)) return 0; // No actual achievement yet
+
+            const percentage = (actual / baseline) * 100;
+
+            // Handle KPIs where lower is better
+            // Added "Staff cost to income ratio (%)"
+            const lowerIsBetterKPIs = [
+                "Cost-to-Income Ratio (%)",
+                "Staff cost to income ratio (%)", // Added
+                "Fraud Losses (Value)"
+            ];
+            if (lowerIsBetterKPIs.includes(kpiName)) {
+                 // Invert the logic for "lower is better"
+                 // Score calculation: Lower percentage means better performance
+                 if (percentage <= 0) return 7;    // Significantly better than target (e.g., negative cost)
+                 if (percentage < 80) return 7;    // 0% to 79.99% of target cost (Excellent)
+                 if (percentage < 90) return 6;    // 80% to 89.99% of target cost (Very Good)
+                 if (percentage < 100) return 5;   // 90% to 99.99% of target cost (Good)
+                 if (percentage === 100) return 4;  // Exactly 100% of target cost (Met Target)
+                 if (percentage < 110) return 3;   // 100.01% to 109.99% of target cost (Fair)
+                 if (percentage < 120) return 2;   // 110% to 119.99% of target cost (Poor)
+                 if (percentage < 130) return 1;   // 120% to 129.99% of target cost (Very Poor)
+                 return 0;                         // 130% or more of target cost (Unacceptable)
+
+                 /* Original inverted logic - kept for reference if needed
+                 if (percentage <= 0) return 7; // Significantly better than target
+                 if (percentage < 20) return 7; // Significantly better
+                 if (percentage < 40) return 6;
+                 if (percentage < 60) return 5;
+                 if (percentage < 80) return 4;
+                 if (percentage < 100) return 3;
+                 if (percentage === 100) return 2;
+                 if (percentage <= 101) return 1; // Slightly over target
+                 return 0; // Significantly worse than target */
+            } else {
+                // Standard calculation (higher is better)
+                if (percentage > 100) return 7;
+                if (percentage === 100) return 6;
+                if (percentage >= 80) return 5;
+                if (percentage >= 60) return 4;
+                if (percentage >= 40) return 3;
+                if (percentage >= 20) return 2;
+                if (percentage >= 1) return 1;
+                return 0; // Includes percentage = 0
+            }
+        }
+
+        function calculateWeightedScore(weight, actualScore) {
+            if (weight === null || isNaN(weight) || actualScore === null || isNaN(actualScore)) {
+                return 0;
+            }
+            // Ensure weight is treated as a percentage
+            const weightPercentage = parseFloat(weight);
+             if (isNaN(weightPercentage)) return 0;
+
+            return (weightPercentage / 100) * actualScore;
+        }
+
+        function updateRowCalculations(row) {
+            const baselineInput = row.querySelector('.baseline');
+            const actualInput = row.querySelector('.actual');
+            const weightInput = row.querySelector('.weight');
+            const actualScoreCell = row.querySelector('.actual-score');
+            const weightedScoreCell = row.querySelector('.weighted-score');
+            // Find the first <td> which contains the KPI name
+            const kpiNameCell = row.querySelector('td:first-child');
+            // Ensure kpiNameCell exists before accessing textContent
+            const kpiName = kpiNameCell ? kpiNameCell.textContent.trim() : '';
+
+            // Ensure inputs exist before accessing value
+            const baseline = baselineInput ? parseFloat(baselineInput.value) : NaN;
+            const actual = actualInput ? parseFloat(actualInput.value) : NaN;
+            const weight = weightInput ? parseFloat(weightInput.value) : NaN;
+
+            const actualScore = calculateActualScore(actual, baseline, kpiName);
+            const weightedScore = calculateWeightedScore(weight, actualScore);
+
+            // Ensure cells exist before setting textContent
+            if (actualScoreCell) {
+                actualScoreCell.textContent = isNaN(actualScore) ? '-' : actualScore;
+            }
+            if (weightedScoreCell) {
+                weightedScoreCell.textContent = isNaN(weightedScore) ? '-' : weightedScore.toFixed(2);
+            }
+
+
+            updateTotals(); // Update totals whenever a row changes
+        }
+
+        function updateTotals() {
+            let overallTotalWeight = 0;
+            let overallWeightedScore = 0;
+            const perspectiveSections = document.querySelectorAll('section[id$="-perspective"]');
+
+            perspectiveSections.forEach(section => {
+                let perspectiveTotalWeight = 0;
+                let perspectiveWeightedScore = 0;
+                 // Select only direct tbody children rows to avoid counting header/footer if they were in tbody
+                const rows = section.querySelectorAll('table[data-perspective] > tbody > tr');
+
+                rows.forEach(row => {
+                    const weightInput = row.querySelector('.weight');
+                    const weightedScoreCell = row.querySelector('.weighted-score');
+
+                    // Ensure elements exist before accessing properties
+                    const weight = weightInput ? (parseFloat(weightInput.value) || 0) : 0;
+                    const weightedScore = weightedScoreCell ? (parseFloat(weightedScoreCell.textContent) || 0) : 0;
+
+                    perspectiveTotalWeight += weight;
+                    perspectiveWeightedScore += weightedScore;
+                });
+
+                const totalWeightCell = section.querySelector('tfoot .total-weight');
+                const totalWeightedScoreCell = section.querySelector('tfoot .total-weighted-score');
+
+                if(totalWeightCell) totalWeightCell.textContent = perspectiveTotalWeight.toFixed(0) + '%';
+                if(totalWeightedScoreCell) totalWeightedScoreCell.textContent = perspectiveWeightedScore.toFixed(2);
+
+                overallTotalWeight += perspectiveTotalWeight;
+                overallWeightedScore += perspectiveWeightedScore;
+            });
+
+            // Update Overall Summary
+            const overallWeightEl = document.getElementById('overall-total-weight');
+            const overallScoreEl = document.getElementById('overall-weighted-score');
+            const weightWarningEl = document.getElementById('weight-warning');
+
+            overallWeightEl.textContent = overallTotalWeight.toFixed(0) + '%';
+            overallScoreEl.textContent = overallWeightedScore.toFixed(2);
+
+            // Show/hide weight warning - use Math.round for comparison robustness
+            if (Math.round(overallTotalWeight) !== 100 && overallTotalWeight > 0) {
+                 weightWarningEl.classList.remove('hidden');
+            } else {
+                 weightWarningEl.classList.add('hidden');
+            }
+        }
+
+        // --- Event Listeners ---
+        // Use event delegation on the body for dynamically added elements (though not used here yet, it's good practice)
+         // Attach listeners directly for static elements
+        document.querySelectorAll('.baseline, .actual, .weight').forEach(input => {
+            input.addEventListener('input', (event) => {
+                // Find the closest 'tr' ancestor
+                const row = event.target.closest('tr');
+                 if (row) { // Ensure a row was found
+                     updateRowCalculations(row);
+                 }
+            });
+        });
+
+
+         // --- Factors Outside Control Table Logic ---
+        const factorsTableBody = document.querySelector('#factors-table tbody');
+        const addFactorRowButton = document.getElementById('add-factor-row');
+
+        function addFactorRow() {
+            const newRow = factorsTableBody.insertRow();
+            newRow.innerHTML = `
+                <td><textarea rows="1" placeholder="Factor..."></textarea></td>
+                <td><textarea rows="1" placeholder="Reason..."></textarea></td>
+                <td><textarea rows="1" placeholder="Action..."></textarea></td>
+                <td class="text-center"><button class="btn-danger" onclick="deleteFactorRow(this)">Remove</button></td>
+            `;
+        }
+
+        // Make deleteFactorRow globally accessible or attach listener differently
+        window.deleteFactorRow = function(button) {
+            const row = button.closest('tr');
+            if (row) {
+                row.remove();
+                 // Optional: Recalculate anything if factors affect scores (not applicable here)
+            }
+        }
+
+        addFactorRowButton.addEventListener('click', addFactorRow);
+
+        // Add one initial row for factors when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+             if (factorsTableBody.rows.length === 0) { // Add only if table is empty
+                addFactorRow();
+             }
+              // Initial calculation on page load
+             document.querySelectorAll('table[data-perspective] > tbody > tr').forEach(row => updateRowCalculations(row));
+             updateTotals(); // Calculate initial totals
+        });
+
+
+        // --- Excel Export Logic ---
+        document.getElementById('export-excel').addEventListener('click', () => {
+             try { // Add error handling for export
+                const wb = XLSX.utils.book_new(); // Create a new workbook
+
+                // --- Sheet 1: Scorecard Data ---
+                const scorecardData = [];
+                // Add Header Row more robustly
+                 const header = [
+                    "Perspective", "Sub-Topic", "Key Performance Indicator (KPI)",
+                    "Baseline Target", "Actual Achieved", "Weight (%)",
+                    "Actual Score (0-7)", "Weighted Score", "Performance Review"
+                ];
+                scorecardData.push(header);
+
+
+                // Iterate through each perspective section
+                document.querySelectorAll('section[id$="-perspective"]').forEach(section => {
+                    const perspectiveName = section.querySelector('h2')?.textContent || 'Unknown Perspective';
+                    // Iterate through each table (subtopic) within the perspective
+                    section.querySelectorAll('table[data-perspective]').forEach(table => {
+                        // Find the subtopic header associated with the table
+                        let subtopicName = 'Unknown Subtopic';
+                        let currentElement = table.previousElementSibling;
+                        while(currentElement && !currentElement.classList.contains('subtopic-header')) {
+                            currentElement = currentElement.previousElementSibling;
+                        }
+                        if (currentElement && currentElement.classList.contains('subtopic-header')) {
+                            subtopicName = currentElement.textContent;
+                        } else {
+                             // Fallback if no specific subtopic header found directly before
+                            subtopicName = table.dataset.subtopic || perspectiveName;
+                        }
+
+
+                         // Iterate through each data row in the table body
+                        table.querySelectorAll('tbody tr').forEach(row => {
+                            const kpi = row.cells[0]?.textContent || '';
+                            const baseline = row.querySelector('.baseline')?.value || '';
+                            const actual = row.querySelector('.actual')?.value || '';
+                            const weight = row.querySelector('.weight')?.value || '';
+                            const actualScore = row.querySelector('.actual-score')?.textContent || '';
+                            const weightedScore = row.querySelector('.weighted-score')?.textContent || '';
+                            const review = row.querySelector('textarea')?.value || '';
+
+                            scorecardData.push([
+                                perspectiveName,
+                                subtopicName,
+                                kpi,
+                                baseline,
+                                actual,
+                                weight,
+                                actualScore,
+                                weightedScore,
+                                review
+                            ]);
+                        });
+                    });
+                     // Add Perspective Totals Row from Footer
+                     const totalWeight = section.querySelector('tfoot .total-weight')?.textContent || '';
+                     const totalWeightedScore = section.querySelector('tfoot .total-weighted-score')?.textContent || '';
+                     if (totalWeight || totalWeightedScore) {
+                         scorecardData.push([perspectiveName, "TOTALS", "", "", "", totalWeight, "", totalWeightedScore, ""]);
+                     }
+                });
+
+                 // Add Overall Totals Row
+                scorecardData.push([]); // Add a blank row for separation
+                scorecardData.push([
+                    "OVERALL SUMMARY", "", "", "", "",
+                    document.getElementById('overall-total-weight')?.textContent || '',
+                    "",
+                    document.getElementById('overall-weighted-score')?.textContent || '',
+                    ""
+                ]);
+
+                const wsScorecard = XLSX.utils.aoa_to_sheet(scorecardData);
+                 // Auto-adjust column widths (basic estimation)
+                const colWidths = header.map((_, i) => ({
+                    wch: scorecardData.reduce((w, r) => Math.max(w, String(r[i] || '').length), 10)
+                }));
+                wsScorecard['!cols'] = colWidths;
+
+                XLSX.utils.book_append_sheet(wb, wsScorecard, "Scorecard");
+
+
+                // --- Sheet 2: Factors Outside Control ---
+                const factorsData = [];
+                factorsData.push(["Factor", "Reason", "Action Taken/Proposed"]); // Header
+                document.querySelectorAll('#factors-table tbody tr').forEach(row => {
+                     // Check if row has the expected number of cells
+                     if (row.cells.length >= 3) {
+                        const factor = row.cells[0].querySelector('textarea')?.value || '';
+                        const reason = row.cells[1].querySelector('textarea')?.value || '';
+                        const action = row.cells[2].querySelector('textarea')?.value || '';
+                        factorsData.push([factor, reason, action]);
+                     }
+                });
+                const wsFactors = XLSX.utils.aoa_to_sheet(factorsData);
+                 wsFactors['!cols'] = [{wch: 40}, {wch: 40}, {wch: 40}]; // Set widths
+                XLSX.utils.book_append_sheet(wb, wsFactors, "Factors Outside Control");
+
+
+                 // --- Sheet 3: Comments & Signatures ---
+                const commentsData = [];
+                commentsData.push(["Section", "Details"]); // Header
+                commentsData.push(["Appraiser Comments", document.getElementById('appraiser-comments')?.value || '']);
+                commentsData.push(["Appraisee Comments", document.getElementById('appraisee-comments')?.value || '']);
+                commentsData.push([]); // Spacer
+                commentsData.push(["Appraisee Signature", document.getElementById('appraisee-signature')?.value || '']);
+                commentsData.push(["Appraisee Date", document.getElementById('appraisee-date')?.value || '']);
+                 commentsData.push(["Appraiser Signature", document.getElementById('appraiser-signature')?.value || '']);
+                commentsData.push(["Appraiser Date", document.getElementById('appraiser-date')?.value || '']);
+
+                const wsComments = XLSX.utils.aoa_to_sheet(commentsData);
+                 wsComments['!cols'] = [{wch: 25}, {wch: 80}]; // Set widths
+                 XLSX.utils.book_append_sheet(wb, wsComments, "Comments and Signatures");
+
+
+                // --- Generate and Download Excel File ---
+                XLSX.writeFile(wb, "Balanced_Scorecard.xlsx", { bookType: 'xlsx', type: 'binary' });
+             } catch (error) {
+                 console.error("Error during Excel export:", error);
+                 alert("An error occurred while exporting to Excel. Please check the console for details.");
+             }
+        });
+
+        // Moved initial calculations to DOMContentLoaded listener above
+
+    </script>
+
+</body>
+</html>

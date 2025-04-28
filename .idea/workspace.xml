@@ -5,14 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9e2d5efc-0a10-4670-89b0-7f72a295be88" name="Changes" comment="Update `.idea/workspace.xml` to clean up and adjust settings.&#10;&#10;Removed obsolete file references and reformatted properties to enhance clarity and maintainability. Minor adjustments were made to task duration data. This improves project configuration and reflects accurate metadata.">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MySQL queries.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Weight MySQL file.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/new MySQL.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assignment Q10 part 2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BSC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ML  disease diagnostic.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Suspense Accounts Inala.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deepseek.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/medical chatbot with API key.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/monitor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/speech to text.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/star_bucs.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/text to audio.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/to do list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/basic.py" beforeDir="false" afterPath="$PROJECT_DIR$/basic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/numbers.py" beforeDir="false" afterPath="$PROJECT_DIR$/problem.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AI assignment 1.py" beforeDir="false" afterPath="$PROJECT_DIR$/AI assignment 1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Individual Assignment Q9.py" beforeDir="false" afterPath="$PROJECT_DIR$/Individual Assignment Q9.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Weight MySQL file.py" beforeDir="false" afterPath="$PROJECT_DIR$/Weight MySQL file.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/names.txt" beforeDir="false" afterPath="$PROJECT_DIR$/names.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +37,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
+        <option value="JavaScript File" />
+        <option value="Dockerfile" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -35,6 +49,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/.venv/Lib/site-packages/numpy/_core/numerictypes.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ML  disease diagnostic.py" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProblemsViewState">
     <hideBySeverity>
@@ -55,12 +70,19 @@
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;Django tests.Test: .executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.BSC.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.Suspense Accounts Inala.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.chatbot.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.medical chatbot with API key.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.to do list.html.executor&quot;: &quot;Run&quot;,
+    &quot;JavaScript Debug.university chatbot.html.executor&quot;: &quot;Run&quot;,
     &quot;Python tests.Doctests in Individual Assignment Q2.executor&quot;: &quot;Run&quot;,
     &quot;Python.08.03.2025.executor&quot;: &quot;Run&quot;,
     &quot;Python.AI ASSIGNMENT 2.executor&quot;: &quot;Run&quot;,
     &quot;Python.AI assignment 1.executor&quot;: &quot;Run&quot;,
     &quot;Python.ASSIGNMENT 2 TINKER.executor&quot;: &quot;Run&quot;,
     &quot;Python.Ai assignment Tinker.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Assignment Q10 part 2.executor&quot;: &quot;Run&quot;,
     &quot;Python.Assignment Question 1.executor&quot;: &quot;Run&quot;,
     &quot;Python.Graphics 2.executor&quot;: &quot;Run&quot;,
     &quot;Python.INHERITENCE.executor&quot;: &quot;Run&quot;,
@@ -73,6 +95,7 @@
     &quot;Python.Individual Assignment Q8.executor&quot;: &quot;Run&quot;,
     &quot;Python.Individual Assignment Q9.executor&quot;: &quot;Run&quot;,
     &quot;Python.Individual assignment Q3.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ML  disease diagnostic.executor&quot;: &quot;Run&quot;,
     &quot;Python.Murimi.executor&quot;: &quot;Run&quot;,
     &quot;Python.MySQL project.executor&quot;: &quot;Run&quot;,
     &quot;Python.MySQL queries.executor&quot;: &quot;Run&quot;,
@@ -85,22 +108,34 @@
     &quot;Python.ai test.executor&quot;: &quot;Run&quot;,
     &quot;Python.assignment 2.executor&quot;: &quot;Run&quot;,
     &quot;Python.basic.executor&quot;: &quot;Run&quot;,
+    &quot;Python.classification of intergers.executor&quot;: &quot;Run&quot;,
+    &quot;Python.deepseek.executor&quot;: &quot;Run&quot;,
     &quot;Python.django_manage.executor&quot;: &quot;Run&quot;,
     &quot;Python.else if.executor&quot;: &quot;Run&quot;,
+    &quot;Python.excelextract.executor&quot;: &quot;Run&quot;,
     &quot;Python.graphical.executor&quot;: &quot;Run&quot;,
     &quot;Python.hours.executor&quot;: &quot;Run&quot;,
     &quot;Python.leap year.executor&quot;: &quot;Run&quot;,
     &quot;Python.medical gemini.executor&quot;: &quot;Run&quot;,
     &quot;Python.medical.executor&quot;: &quot;Run&quot;,
+    &quot;Python.monitor.executor&quot;: &quot;Run&quot;,
     &quot;Python.name.executor&quot;: &quot;Run&quot;,
     &quot;Python.new MySQL.executor&quot;: &quot;Run&quot;,
     &quot;Python.num1.executor&quot;: &quot;Run&quot;,
     &quot;Python.numbers.executor&quot;: &quot;Run&quot;,
     &quot;Python.parent.executor&quot;: &quot;Run&quot;,
+    &quot;Python.practise Q2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.practise Q3.executor&quot;: &quot;Run&quot;,
+    &quot;Python.practise Q4.executor&quot;: &quot;Run&quot;,
+    &quot;Python.practise Q5.executor&quot;: &quot;Run&quot;,
+    &quot;Python.sikhuproject.executor&quot;: &quot;Run&quot;,
+    &quot;Python.star_bucs.executor&quot;: &quot;Run&quot;,
+    &quot;Python.text to audio.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;database.data.extractors.current.export.id&quot;: &quot;Comma-separated (CSV)_id&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/lncube/PyCharmMiscProject/basic.py&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -117,14 +152,23 @@
     ]
   }
 }</component>
-  <component name="RunManager" selected="Python.MySQL project">
+  <component name="RunManager" selected="JavaScript Debug.Suspense Accounts Inala.html">
     <configuration name="Unnamed" type="ChromiumRemoteDebugType" factoryName="Chromium Remote" editBeforeRun="true" nameIsGenerated="true" port="9229">
       <method v="2" />
     </configuration>
     <configuration default="true" type="ChromiumRemoteDebugType" factoryName="Chromium Remote" editBeforeRun="true" port="9229">
       <method v="2" />
     </configuration>
-    <configuration name="Individual Assignment Q10" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="BSC.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/PyCharmMiscProject/BSC.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="Suspense Accounts Inala.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/PyCharmMiscProject/Suspense Accounts Inala.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="to do list.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/PyCharmMiscProject/to do list.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="excelextract" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PyCharmMiscProject" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -138,7 +182,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Individual Assignment Q10.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/excelextract.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -147,7 +191,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="MySQL project" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="monitor" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PyCharmMiscProject" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -161,76 +205,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MySQL project.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="MySQL queries" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PyCharmMiscProject" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MySQL queries.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Weight MySQL file" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PyCharmMiscProject" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Weight MySQL file.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="new MySQL" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="PyCharmMiscProject" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/new MySQL.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/monitor.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -241,11 +216,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.MySQL project" />
-        <item itemvalue="Python.Weight MySQL file" />
-        <item itemvalue="Python.MySQL queries" />
-        <item itemvalue="Python.new MySQL" />
-        <item itemvalue="Python.Individual Assignment Q10" />
+        <item itemvalue="JavaScript Debug.Suspense Accounts Inala.html" />
+        <item itemvalue="JavaScript Debug.to do list.html" />
+        <item itemvalue="JavaScript Debug.BSC.html" />
+        <item itemvalue="Python.excelextract" />
+        <item itemvalue="Python.monitor" />
       </list>
     </recent_temporary>
   </component>
@@ -289,7 +264,21 @@
       <workItem from="1742546799142" duration="4973000" />
       <workItem from="1742553014941" duration="1244000" />
       <workItem from="1742554615970" duration="1489000" />
-      <workItem from="1742556136063" duration="3982000" />
+      <workItem from="1742556136063" duration="5335000" />
+      <workItem from="1742573995378" duration="494000" />
+      <workItem from="1742577554393" duration="3378000" />
+      <workItem from="1742647395347" duration="887000" />
+      <workItem from="1742653225541" duration="395000" />
+      <workItem from="1742654956165" duration="2962000" />
+      <workItem from="1742799711270" duration="35000" />
+      <workItem from="1742812892310" duration="2387000" />
+      <workItem from="1742817839567" duration="5924000" />
+      <workItem from="1743243056797" duration="12565000" />
+      <workItem from="1743525556275" duration="3654000" />
+      <workItem from="1743664682695" duration="31253000" />
+      <workItem from="1744379402618" duration="32575000" />
+      <workItem from="1745159360722" duration="10784000" />
+      <workItem from="1745664952617" duration="1192000" />
     </task>
     <servers />
   </component>
@@ -299,49 +288,78 @@
   <component name="VcsManagerConfiguration">
     <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/practise Q2.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/monitor.py</url>
+          <line>41</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Individual_Assignment_Q5.coverage" NAME="Individual Assignment Q5 Coverage Results" MODIFIED="1742381301546" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Individual_Assignment_Q8.coverage" NAME="Individual Assignment Q8 Coverage Results" MODIFIED="1742383146127" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$new_MySQL.coverage" NAME="new MySQL Coverage Results" MODIFIED="1742554794711" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Individual_assignment_Q3.coverage" NAME="Individual assignment Q3 Coverage Results" MODIFIED="1742379674481" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$graphical.coverage" NAME="graphical Coverage Results" MODIFIED="1742813244189" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$MySQL_queries.coverage" NAME="MySQL queries Coverage Results" MODIFIED="1742556213259" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Ai_assignment_Tinker.coverage" NAME="Ai assignment Tinker Coverage Results" MODIFIED="1743527644656" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$AI_ASSIGNMENT_2.coverage" NAME="AI ASSIGNMENT 2 Coverage Results" MODIFIED="1742813233682" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Question_5_assignment.coverage" NAME="Question 5 assignment Coverage Results" MODIFIED="1741513706933" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$star_bucs.coverage" NAME="star_bucs Coverage Results" MODIFIED="1744055821700" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$practise_Q2.coverage" NAME="practise Q2 Coverage Results" MODIFIED="1743675971836" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Assignment_Q10_part_2.coverage" NAME="Assignment Q10 part 2 Coverage Results" MODIFIED="1742655085805" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$practise_Q5.coverage" NAME="practise Q5 Coverage Results" MODIFIED="1743777083566" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$AI_assignment_1.coverage" NAME="AI assignment 1 Coverage Results" MODIFIED="1743528789547" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$practise_Q4.coverage" NAME="practise Q4 Coverage Results" MODIFIED="1743682634076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Assignment_Question_1.coverage" NAME="Assignment Question 1 Coverage Results" MODIFIED="1741419492479" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$monitor.coverage" NAME="monitor Coverage Results" MODIFIED="1744714001897" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$num1.coverage" NAME="num1 Coverage Results" MODIFIED="1740219861927" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Individual_Assignment_Q1.coverage" NAME="Individual Assignment Q1 Coverage Results" MODIFIED="1742378812203" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$INHERITENCE.coverage" NAME="INHERITENCE Coverage Results" MODIFIED="1741172043785" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$medical_gemini.coverage" NAME="medical gemini Coverage Results" MODIFIED="1740410209380" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$classification_of_intergers.coverage" NAME="classification of intergers Coverage Results" MODIFIED="1743672434838" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Scores.coverage" NAME="Scores Coverage Results" MODIFIED="1740495105566" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$MySQL_project.coverage" NAME="MySQL project Coverage Results" MODIFIED="1742563043270" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$sikhuproject.coverage" NAME="sikhuproject Coverage Results" MODIFIED="1743523795407" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$name.coverage" NAME="name Coverage Results" MODIFIED="1740589255330" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Individual_Assignment_Q7.coverage" NAME="Individual Assignment Q7 Coverage Results" MODIFIED="1742382646334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Question_4_assignment.coverage" NAME="Question 4 assignment Coverage Results" MODIFIED="1741513114860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$Doctests_in_Individual_Assignment_Q2.coverage" NAME="Doctests in Individual Assignment Q2 Coverage Results" MODIFIED="1742379495914" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$hours.coverage" NAME="hours Coverage Results" MODIFIED="1740220795551" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$leap_year.coverage" NAME="leap year Coverage Results" MODIFIED="1740294874734" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$Question_3_assignment.coverage" NAME="Question 3 assignment Coverage Results" MODIFIED="1741511872220" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Individual_Assignment_Q5.coverage" NAME="Individual Assignment Q5 Coverage Results" MODIFIED="1742381301546" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Individual_Assignment_Q8.coverage" NAME="Individual Assignment Q8 Coverage Results" MODIFIED="1742383146127" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Weight_MySQL_file.coverage" NAME="Weight MySQL file Coverage Results" MODIFIED="1742562751702" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Individual_assignment_Q3.coverage" NAME="Individual assignment Q3 Coverage Results" MODIFIED="1742379674481" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyCharmMiscProject$new_MySQL.coverage" NAME="new MySQL Coverage Results" MODIFIED="1742554794711" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyCharmMiscProject$SQL_FILE.coverage" NAME="SQL FILE Coverage Results" MODIFIED="1742112916576" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyCharmMiscProject$graphical.coverage" NAME="graphical Coverage Results" MODIFIED="1742108146991" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Ai_assignment_Tinker.coverage" NAME="Ai assignment Tinker Coverage Results" MODIFIED="1742374905427" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyCharmMiscProject$MySQL_queries.coverage" NAME="MySQL queries Coverage Results" MODIFIED="1742556213259" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyCharmMiscProject$AI_ASSIGNMENT_2.coverage" NAME="AI ASSIGNMENT 2 Coverage Results" MODIFIED="1741716386629" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Question_5_assignment.coverage" NAME="Question 5 assignment Coverage Results" MODIFIED="1741513706933" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Weight_MySQL_file.coverage" NAME="Weight MySQL file Coverage Results" MODIFIED="1742823402704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$SQL_FILE.coverage" NAME="SQL FILE Coverage Results" MODIFIED="1744122570152" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$ML__disease_diagnostic.coverage" NAME="ML  disease diagnostic Coverage Results" MODIFIED="1743278610907" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$practise_Q3.coverage" NAME="practise Q3 Coverage Results" MODIFIED="1743676854428" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$else_if.coverage" NAME="else if Coverage Results" MODIFIED="1740239870815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$Individual_Assignment_Q6.coverage" NAME="Individual Assignment Q6 Coverage Results" MODIFIED="1742382230376" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$parent.coverage" NAME="parent Coverage Results" MODIFIED="1741169389488" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Individual_Assignment_Q9.coverage" NAME="Individual Assignment Q9 Coverage Results" MODIFIED="1742384227204" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Individual_Assignment_Q9.coverage" NAME="Individual Assignment Q9 Coverage Results" MODIFIED="1742817212659" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$Murimi.coverage" NAME="Murimi Coverage Results" MODIFIED="1740819022726" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$assignment_2.coverage" NAME="assignment 2 Coverage Results" MODIFIED="1742108318585" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$medical.coverage" NAME="medical Coverage Results" MODIFIED="1740400019432" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyCharmMiscProject$AI_assignment_1.coverage" NAME="AI assignment 1 Coverage Results" MODIFIED="1741602716198" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Assignment_Question_1.coverage" NAME="Assignment Question 1 Coverage Results" MODIFIED="1741419492479" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$text_to_audio.coverage" NAME="text to audio Coverage Results" MODIFIED="1743970540257" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$deepseek.coverage" NAME="deepseek Coverage Results" MODIFIED="1744450728999" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$numbers.coverage" NAME="numbers Coverage Results" MODIFIED="1740241528786" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$basic.coverage" NAME="basic Coverage Results" MODIFIED="1742118925962" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyCharmMiscProject$num1.coverage" NAME="num1 Coverage Results" MODIFIED="1740219861927" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$08_03_2025.coverage" NAME="08.03.2025 Coverage Results" MODIFIED="1741422598437" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Individual_Assignment_Q4.coverage" NAME="Individual Assignment Q4 Coverage Results" MODIFIED="1742379980725" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Individual_Assignment_Q1.coverage" NAME="Individual Assignment Q1 Coverage Results" MODIFIED="1742378812203" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Individual_Assignment_Q4.coverage" NAME="Individual Assignment Q4 Coverage Results" MODIFIED="1743677305194" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$ai_test.coverage" NAME="ai test Coverage Results" MODIFIED="1741529430803" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyCharmMiscProject$INHERITENCE.coverage" NAME="INHERITENCE Coverage Results" MODIFIED="1741172043785" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyCharmMiscProject$medical_gemini.coverage" NAME="medical gemini Coverage Results" MODIFIED="1740410209380" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Individual_Assignment_Q10.coverage" NAME="Individual Assignment Q10 Coverage Results" MODIFIED="1742551372640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Scores.coverage" NAME="Scores Coverage Results" MODIFIED="1740495105566" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyCharmMiscProject$MySQL_project.coverage" NAME="MySQL project Coverage Results" MODIFIED="1742563043270" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Individual_Assignment_Q10.coverage" NAME="Individual Assignment Q10 Coverage Results" MODIFIED="1742578926659" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$excelextract.coverage" NAME="excelextract Coverage Results" MODIFIED="1744843414172" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$Test__.coverage" NAME="Test:  Coverage Results" MODIFIED="1742379730160" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Graphics_2.coverage" NAME="Graphics 2 Coverage Results" MODIFIED="1742148988838" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Graphics_2.coverage" NAME="Graphics 2 Coverage Results" MODIFIED="1742813501028" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$django_manage.coverage" NAME="django_manage Coverage Results" MODIFIED="1741716229989" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_HOME_DIR$/plugins/python-ce/helpers/pycharm" />
-    <SUITE FILE_PATH="coverage/PyCharmMiscProject$name.coverage" NAME="name Coverage Results" MODIFIED="1740589255330" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Individual_Assignment_Q7.coverage" NAME="Individual Assignment Q7 Coverage Results" MODIFIED="1742382646334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyCharmMiscProject$ASSIGNMENT_2_TINKER.coverage" NAME="ASSIGNMENT 2 TINKER Coverage Results" MODIFIED="1742374847467" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyCharmMiscProject$Question_4_assignment.coverage" NAME="Question 4 assignment Coverage Results" MODIFIED="1741513114860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

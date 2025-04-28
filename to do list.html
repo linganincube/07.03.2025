@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lingani Task Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <style>
+        /* Custom styles for drag-and-drop */
+        body {
+            font-family: 'Inter', sans-serif; /* Use Inter font */
+        }
+        .kanban-column {
+            min-height: 300px; /* Ensure columns have a minimum height */
+            transition: background-color 0.2s ease-in-out; /* Smooth background transition */
+        }
+        .task {
+            cursor: grab; /* Indicate draggable item */
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transitions */
+            touch-action: none; /* Recommended for better mobile drag experience */
+        }
+        .task.dragging {
+            opacity: 0.5; /* Make dragged item semi-transparent */
+            cursor: grabbing;
+            transform: scale(1.05); /* Slightly enlarge */
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); /* Add shadow */
+        }
+        .drag-over {
+            background-color: rgba(0, 128, 0, 0.1); /* Highlight drop zone */
+            border-style: dashed;
+        }
+        /* Style for the message box */
+        #message-box {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            background-color: #ef4444; /* Red background */
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: none; /* Hidden by default */
+            transition: opacity 0.5s ease-in-out;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-blue-100 to-purple-100 min-h-screen p-4 md:p-8">
+
+    <div class="container mx-auto max-w-6xl">
+        <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-6 md:mb-10">My Kanban Board</h1>
+
+        <div class="mb-6 md:mb-8 p-4 bg-white rounded-lg shadow-md flex flex-col sm:flex-row gap-3">
+            <input type="text" id="new-task-input" placeholder="Enter a new task..." class="flex-grow p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+            <button id="add-task-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-5 rounded-md transition duration-200 ease-in-out shadow hover:shadow-lg">
+                Add Task
+            </button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+            <div id="todo" class="kanban-column bg-gray-100 p-4 rounded-lg shadow-md border-t-4 border-red-400">
+                <h2 class="text-xl font-semibold text-gray-700 mb-4 text-center">To Do</h2>
+                <div class="space-y-3 task-list">
+                    </div>
+            </div>
+
+            <div id="inprogress" class="kanban-column bg-gray-100 p-4 rounded-lg shadow-md border-t-4 border-yellow-400">
+                <h2 class="text-xl font-semibold text-gray-700 mb-4 text-center">In Progress</h2>
+                <div class="space-y-3 task-list">
+                    </div>
+            </div>
+
+            <div id="done" class="kanban-column bg-gray-100 p-4 rounded-lg shadow-md border-t-4 border-green-400">
+                <h2 class="text-xl font-semibold text-gray-700 mb-4 text-center">Done</h2>
+                <div class="space-y-3 task-list">
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="message-box"></div>
+
+    <script>
+        // DOM Elements
+        const columns = document.querySelectorAll('.kanban-column');
+        const addTaskBtn = document.getElementById('add-task-btn');
+        const newTaskInput = document.getElementById('new-task-input');
+        const todoColumnList = document.querySelector('#todo .task-list');
+        const messageBox = document.getElementById('message-box');
+
+        // --- Task Data Management ---
+        let tasks = JSON.parse(localStorage.getItem('kanbanTasks')) || {
+            todo: [],
+            inprogress: [],
+            done: []
+        };
+        let draggedTask = null; // To keep track of the task being dragged
+
+        // Function to display a message
+        function showMessage(message, duration = 3000) {
+            messageBox.textContent = message;
+            messageBox.style.display = 'block';
+            messageBox.style.opacity = 1;
+            setTimeout(() => {
+                messageBox.style.opacity = 0;
+                // Wait for fade out before hiding
+                setTimeout(() => messageBox.style.display = 'none', 500);
+            }, duration);
+        }
+
+        // Function to save tasks to localStorage
+        function saveTasks() {
+            localStorage.setItem('kanbanTasks', JSON.stringify(tasks));
+        }
+
+        // Function to create a task element
+        function createTaskElement(taskText, taskId) {
+            const taskDiv = document.createElement('div');
+            taskDiv.classList.add('task', 'bg-white', 'p-3', 'rounded-md', 'shadow', 'border-l-4', 'border-blue-500');
+            taskDiv.textContent = taskText;
+            taskDiv.setAttribute('draggable', 'true');
+            taskDiv.dataset.id = taskId; // Assign a unique ID
+
+            // Drag Start Event: When dragging begins
+            taskDiv.addEventListener('dragstart', (e) => {
+                draggedTask = taskDiv;
+                e.dataTransfer.setData('text/plain', taskId); // Store task ID
+                // Use setTimeout to allow the browser to render the element before applying class
+                setTimeout(() => {
+                    taskDiv.classList.add('dragging');
+                }, 0);
+            });
+
+            // Drag End Event: When dragging finishes (dropped or cancelled)
+            taskDiv.addEventListener('dragend', () => {
+                if (draggedTask) { // Check if draggedTask is still valid
+                    draggedTask.classList.remove('dragging');
+                }
+                draggedTask = null; // Reset dragged task
+            });
+
+            // Add delete button
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = '×'; // Simple 'x' for delete
+            deleteBtn.classList.add('float-right', 'text-red-500', 'hover:text-red-700', 'font-bold', 'ml-2', 'text-lg', 'leading-none');
+            deleteBtn.title = "Delete Task";
+            deleteBtn.onclick = (e) => {
+                e.stopPropagation(); // Prevent triggering dragstart
+                deleteTask(taskId, taskDiv);
+            };
+            taskDiv.appendChild(deleteBtn);
+
+
+            return taskDiv;
+        }
+
+        // Function to render all tasks from the tasks object
+        function renderTasks() {
+            // Clear existing tasks from columns first
+            document.querySelectorAll('.task-list').forEach(list => list.innerHTML = '');
+
+            // Render tasks in each column
+            Object.keys(tasks).forEach(columnId => {
+                const columnList = document.querySelector(`#${columnId} .task-list`);
+                if (columnList) {
+                    tasks[columnId].forEach(task => {
+                        const taskElement = createTaskElement(task.text, task.id);
+                        columnList.appendChild(taskElement);
+                    });
+                }
+            });
+            addDragAndDropListeners(); // Re-add listeners after rendering
+        }
+
+        // Function to add a new task
+        function addTask() {
+            const taskText = newTaskInput.value.trim();
+            if (taskText === '') {
+                showMessage('Task cannot be empty!');
+                return; // Don't add empty tasks
+            }
+
+            const newTaskId = 'task-' + Date.now(); // Simple unique ID
+            const newTask = { id: newTaskId, text: taskText };
+
+            tasks.todo.push(newTask); // Add to 'todo' array
+            saveTasks(); // Save to localStorage
+
+            const taskElement = createTaskElement(taskText, newTaskId);
+            todoColumnList.appendChild(taskElement); // Add visually to the 'To Do' list
+
+            newTaskInput.value = ''; // Clear the input field
+            addDragAndDropListeners(); // Ensure new task has listeners
+        }
+
+        // Function to delete a task
+        function deleteTask(taskId, taskElement) {
+            // Find and remove the task from the data structure
+            let found = false;
+            for (const columnId in tasks) {
+                const taskIndex = tasks[columnId].findIndex(task => task.id === taskId);
+                if (taskIndex > -1) {
+                    tasks[columnId].splice(taskIndex, 1);
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found) {
+                taskElement.remove(); // Remove the element from the DOM
+                saveTasks(); // Update localStorage
+            } else {
+                console.error("Could not find task to delete with ID:", taskId);
+            }
+        }
+
+
+        // --- Drag and Drop Logic ---
+
+        function addDragAndDropListeners() {
+            const currentTasks = document.querySelectorAll('.task');
+
+            // Remove old listeners to prevent duplicates (important if tasks are re-rendered)
+            currentTasks.forEach(task => {
+                 // Remove existing listeners if they were added before
+                task.removeEventListener('dragstart', handleDragStart);
+                task.removeEventListener('dragend', handleDragEnd);
+
+                // Add new listeners
+                task.addEventListener('dragstart', handleDragStart);
+                task.addEventListener('dragend', handleDragEnd);
+            });
+
+             // Add listeners to columns (drop zones)
+            columns.forEach(column => {
+                // Remove old listeners first
+                column.removeEventListener('dragover', handleDragOver);
+                column.removeEventListener('dragenter', handleDragEnter);
+                column.removeEventListener('dragleave', handleDragLeave);
+                column.removeEventListener('drop', handleDrop);
+
+                // Add new listeners
+                column.addEventListener('dragover', handleDragOver);
+                column.addEventListener('dragenter', handleDragEnter); // Add visual cue
+                column.addEventListener('dragleave', handleDragLeave); // Remove visual cue
+                column.addEventListener('drop', handleDrop);
+            });
+        }
+
+        // Handler functions need to be defined outside addDragAndDropListeners
+        // so they can be referenced by removeEventListener
+
+        function handleDragStart(e) {
+            draggedTask = this; // 'this' refers to the task element
+            e.dataTransfer.setData('text/plain', this.dataset.id);
+            setTimeout(() => {
+                this.classList.add('dragging');
+            }, 0);
+        }
+
+        function handleDragEnd() {
+            if (this) { // Check if 'this' (the task) still exists
+                 this.classList.remove('dragging');
+            }
+            draggedTask = null;
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault(); // Necessary to allow dropping
+            // Optional: Add more sophisticated logic to find the exact drop position
+        }
+
+        function handleDragEnter(e) {
+            e.preventDefault();
+            // Check if the target is a valid drop zone (column or task list)
+            if (this.classList.contains('kanban-column') || this.classList.contains('task-list')) {
+               this.closest('.kanban-column').classList.add('drag-over');
+            }
+        }
+
+        function handleDragLeave() {
+             // Check if the related target (where the mouse moved to) is outside the current column
+             if (!this.contains(event.relatedTarget)) {
+                this.closest('.kanban-column').classList.remove('drag-over');
+             }
+        }
+
+
+        function handleDrop(e) {
+            e.preventDefault(); // Prevent default drop behavior
+            const targetColumn = this.closest('.kanban-column'); // Get the column element
+            targetColumn.classList.remove('drag-over'); // Remove visual cue
+
+            if (!draggedTask || !targetColumn) return; // Ensure we have a task and a target
+
+            const taskId = e.dataTransfer.getData('text/plain');
+            const targetList = targetColumn.querySelector('.task-list');
+            const targetColumnId = targetColumn.id; // 'todo', 'inprogress', or 'done'
+
+            if (targetList && draggedTask.parentNode !== targetList) {
+                // Find the task data
+                let taskData = null;
+                let sourceColumnId = null;
+                for (const colId in tasks) {
+                    const taskIndex = tasks[colId].findIndex(task => task.id === taskId);
+                    if (taskIndex > -1) {
+                        taskData = tasks[colId].splice(taskIndex, 1)[0]; // Remove from old array
+                        sourceColumnId = colId;
+                        break;
+                    }
+                }
+
+                if (taskData) {
+                    // Add task data to the new column's array
+                    tasks[targetColumnId].push(taskData);
+
+                    // Move the element in the DOM
+                    targetList.appendChild(draggedTask);
+
+                    // --- Confetti Trigger ---
+                    // Check if the task was moved *to* the 'Done' column
+                    if (targetColumnId === 'done' && sourceColumnId !== 'done') {
+                        triggerConfetti();
+                    }
+
+                    saveTasks(); // Save the updated state
+                } else {
+                    console.error("Could not find task data for ID:", taskId);
+                    // Optionally, re-render everything if state becomes inconsistent
+                    // renderTasks();
+                }
+            }
+             draggedTask = null; // Reset dragged task reference
+        }
+
+
+        // --- Confetti ---
+        function triggerConfetti() {
+            confetti({
+                particleCount: 150, // More particles
+                spread: 90,      // Wider spread
+                origin: { y: 0.6 }, // Start slightly lower
+                colors: ['#26ccff', '#a25afd', '#ff5e7e', '#88ff5a', '#fcff42'], // Custom colors
+                disableForReducedMotion: true // Respect user preference
+            });
+        }
+
+        // --- Initialization ---
+        addTaskBtn.addEventListener('click', addTask);
+        newTaskInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                addTask();
+            }
+        });
+
+        // Initial render of tasks on page load
+        renderTasks();
+
+    </script>
+
+</body>
+</html>

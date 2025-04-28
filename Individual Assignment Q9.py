@@ -22,7 +22,7 @@ def split_by_non_alphanumeric(text):
 if __name__ == "__main__":
     # Test data
     sample_text = "Contact us at linganincube@gmail.com or lncube@afcholdings.co.zw. For urgent matters, email emergency@cuz.ac.zw."
-    date_to_check = "2023-05-115"
+    date_to_check = "2023-05-15"
     text_to_replace = "The quick brown fox jumps over the lazy dog. Jumps!"
     text_to_split = "Hello, world! This is a test: 1983."
 
@@ -33,7 +33,7 @@ if __name__ == "__main__":
     print(f"Is '{date_to_check}' valid?", validate_date(date_to_check))
 
     # III. Replace words
-    print("Replaced text:", replace_words(text_to_replace, "jumps", "crawl"))
+    print("Replaced text:", replace_words(text_to_replace, "fox", "dog"))
 
     # IV. Split by non-alphanumeric
     print("Split text:", split_by_non_alphanumeric(text_to_split))

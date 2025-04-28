@@ -20,8 +20,8 @@ CREATE TABLE IF NOT EXISTS users (
 ''')
 
 # Insert data into the table
-cursor.execute('INSERT INTO users (name, age) VALUES (%s, %s)', ('Lings', 30))
-cursor.execute('INSERT INTO users (name, age) VALUES (%s, %s)', ('Skhue', 25))
+cursor.execute('INSERT INTO users (name, age) VALUES (%s, %s)', ('x', 30))
+cursor.execute('INSERT INTO users (name, age) VALUES (%s, %s)', ('y', 25))
 
 # Commit the changes
 connection.commit()

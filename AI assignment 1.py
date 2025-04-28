@@ -20,7 +20,7 @@ def diagnose_disease(symptoms):
             possible_diseases.append(disease)
     return possible_diseases
 def main():
-    print("Welcome to the LingsMedic Healthcare Diagnosis System!")
+    print("Welcome to the SikhuMedic Healthcare Diagnosis System!")
     print("Please enter your symptoms separated by commas (e.g., fever, cough, sore_throat):")
     user_symptoms = input().lower().split(", ")
     possible_diagnoses = diagnose_disease(user_symptoms)

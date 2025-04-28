@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disease Diagnostic Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .chat-container {
+            width: 450px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .chat-header {
+            background: #4caf50;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .chat-box {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            border-bottom: 1px solid #ddd;
+        }
+        .message.user {
+            text-align: right;
+            margin-bottom: 10px;
+        }
+        .message.bot {
+            text-align: left;
+            margin-bottom: 10px;
+        }
+        .message.user span {
+            background: #dcf8c6;
+            padding: 10px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            max-width: 70%;
+        }
+        .message.bot span {
+            background: #e9ecef;
+            padding: 10px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            max-width: 70%;
+        }
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            background: #f9f9f9;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+            font-size: 1rem;
+        }
+        .chat-input button {
+            padding: 10px 15px;
+            margin-left: 10px;
+            border: none;
+            background: #4caf50;
+            color: #fff;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .chat-input button:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">Disease Diagnostic Chatbot</div>
+        <div class="chat-box" id="chatBox">
+            <div class="message bot"><span>Hello! I'm here to help diagnose diseases based on your symptoms. Please describe your symptoms.</span></div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Describe your symptoms...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        const chatBox = document.getElementById('chatBox');
+        const userInput = document.getElementById('userInput');
+
+        // Replace these with your actual Deepseek API key and endpoint
+        const DEEPSEEK_API_KEY = 'sk-feee0c24ebc64e0e81961a190d65ee1a';
+        const DEEPSEEK_API_ENDPOINT = 'https://api.deepseek.com/v1/chat/completions';
+
+        async function sendMessage() {
+            const userMessage = userInput.value.trim();
+            if (userMessage === "") return;
+
+            appendMessage(userMessage, 'user');
+            userInput.value = "";
+
+            try {
+                // Show a loading message
+                appendMessage("Analyzing your symptoms...", 'bot');
+
+                // Call the Deepseek API
+                const response = await fetch(DEEPSEEK_API_ENDPOINT, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${DEEPSEEK_API_KEY}`
+                    },
+                    body: JSON.stringify({
+                        model: 'deepseek-disease-diagnostic', // Replace with the appropriate model name
+                        messages: [
+                            { role: 'system', content: 'You are a medical assistant trained to diagnose diseases based on symptoms.' },
+                            { role: 'user', content: userMessage }
+                        ]
+                    })
+                });
+
+                const data = await response.json();
+
+                // Extract the bot's response
+                const botResponse = data.choices[0]?.message?.content || "I'm sorry, I couldn't analyze your symptoms at this time.";
+
+                // Remove the loading message and append the actual response
+                chatBox.lastChild.remove();
+                appendMessage(botResponse, 'bot');
+            } catch (error) {
+                console.error('Error communicating with Deepseek API:', error);
+                appendMessage("An error occurred while processing your request. Please try again later.", 'bot');
+            }
+        }
+
+        function appendMessage(message, sender) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', sender);
+            messageElement.innerHTML = `<span>${message}</span>`;
+            chatBox.appendChild(messageElement);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        userInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+</body>
+</html>
